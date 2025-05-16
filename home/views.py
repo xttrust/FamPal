@@ -15,5 +15,5 @@ def contact(request):
     return HttpResponse("Hello, world. You're at the home contact.")
 
 
-def services(request):
-    return HttpResponse("Hello, world. You're at the home services.")
+def help(request):
+    return HttpResponse("Hello, world. You're at the home help.")
