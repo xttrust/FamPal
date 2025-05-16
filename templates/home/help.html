@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Get Help - FamPal{% endblock %}
+
+{% block content %}
+<h1>Need Help?</h1>
+<form method="post">
+    {% csrf_token %}
+    <input type="text" placeholder="What do you need help with?">
+    <button type="submit">🎤</button>
+</form>
+
+<h2>Common Family Problems</h2>
+<ul>
+    <li>How to plan weekly meals?</li>
+    <li>Best way to organize kids’ chores?</li>
+    <li>Fun activities for weekends?</li>
+</ul>
+{% endblock %}
