@@ -19,14 +19,15 @@
                 aria-label="Your question"></textarea>
 
               <!-- Mic button -->
-              <button type="button" class="btn btn-outline-secondary position-absolute top-0 end-0 mt-2 me-2"
-                id="micButton" title="Click to speak your question">
-                <i class="bi bi-mic-fill"></i>
+              <button id="micButton" type="button"
+                class="btn btn-outline-secondary position-absolute top-0 end-0 mt-2 me-2"
+                title="Click to speak your question">
+                <i id="micIcon" class="bi bi-mic-fill"></i>
               </button>
             </div>
           </div>
 
-        <!-- Submit button -->
+          <!-- Submit button -->
           <div class="d-grid">
             <button type="submit" class="btn btn-primary">Submit</button>
           </div>
@@ -37,9 +38,9 @@
           <label for="answerBox" class="form-label">Answer</label>
           <div id="answerBox" class="form-control bg-light" style="min-height: 4em;">
             {% if answer %}
-              {{ answer }}
+            {{ answer }}
             {% else %}
-              <span class="text-muted">Your answer will appear here after you submit your question.</span>
+            <span class="text-muted">Your answer will appear here after you submit your question.</span>
             {% endif %}
           </div>
         </div>
@@ -55,7 +56,14 @@
   </div>
 </div>
 
-<!-- To auto size the input field for longer questions -->
+<!-- CSS -->
+<style>
+  button#micButton.listening {
+    background-color: #0d6efd !important;
+  }
+</style>
+
+<!-- JS to auto size the input field for longer questions -->
 <script>
   const textarea = document.getElementById('messageInput');
 
@@ -76,7 +84,7 @@
   window.addEventListener('load', autoResize);
 </script>
 
-<!-- Speech to text function -->
+<!-- JS speech to text function -->
 <script>
   const micButton = document.getElementById('micButton');
   const messageInput = document.getElementById('messageInput');
@@ -90,28 +98,41 @@
     recognition.interimResults = false;
 
     micButton.addEventListener('click', () => {
-      micButton.innerHTML = '<i class="bi bi-mic-mute-fill"></i>';
+      micButton.classList.remove('btn-outline-secondary');
+      micButton.classList.add('btn-primary', 'listening', 'blinking');
+      micButton.classList.add('listening', 'blinking');
+      micIcon.classList.remove('bi-mic-fill');
+      micIcon.classList.add('bi-mic-fill');
       recognition.start();
     });
 
     recognition.onresult = (event) => {
       const transcript = event.results[0][0].transcript;
       messageInput.value = transcript;
-      micButton.innerHTML = '<i class="bi bi-mic-fill"></i>';
       messageInput.dispatchEvent(new Event('input')); // trigger auto-resize
     };
 
     recognition.onerror = () => {
-      micButton.innerHTML = '<i class="bi bi-mic-fill"></i>';
+      resetMicButton();
     };
 
     recognition.onend = () => {
-      micButton.innerHTML = '<i class="bi bi-mic-fill"></i>';
+      mmicButton.classList.remove('listening', 'blinking');
+      micIcon.classList.remove('bi-mic-mute-fill');
+      micIcon.classList.add('bi-mic-fill');
     };
   } else {
     micButton.disabled = true;
     micButton.title = "Speech recognition not supported in this browser.";
   }
+
+  function resetMicButton() {
+  micButton.classList.remove('btn-primary', 'listening', 'blinking');
+  micButton.classList.add('btn-outline-secondary');
+
+  micIcon.classList.remove('bi-mic-fill');
+  micIcon.classList.add('bi-mic-fill');
+}
 </script>
 
 {% endblock %}
