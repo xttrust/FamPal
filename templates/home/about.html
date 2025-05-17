@@ -3,6 +3,136 @@
 {% block title %}About - FamPal{% endblock %}
 
 {% block content %}
-<h1>About FamPal</h1>
-<p>FamPal helps families solve everyday problems using AI.</p>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+<div style="background: linear-gradient(to bottom, #d0eaff, #f5f5f5, #d0eaff); padding: 60px 0;">
+  <div class="container">
+    <!-- Header -->
+    <div class="text-center mb-5">
+      <h1 class="display-4 fw-bold">About FamPal</h1>
+      <p class="lead text-secondary">Your AI-powered  Tech helper for family tasks and more</p>
+    </div>
+
+    <!-- Mission and Features side by side -->
+    <div class="d-flex justify-content-center align-items-start gap-4 flex-wrap my-5">
+
+  <div class="card shadow animate__animated animate__fadeInUp" 
+       style="width: 320px; position: relative; z-index: 2; margin-right: -4px;">
+    <div class="card-body text-center">
+      <h3 class="card-title mb-3">FamPal</h3>
+      <p>
+        FamPal Tech Support App for Families, especially for  Elders
+
+        It leverages AI technology. It can help you  to manage everyday tasks and provide helpful resources. It is easy to learn and use.
+      </p>
+    </div>
+  </div>
+
+  <!-- What We Offer Card (Right) -->
+  <div class="card shadow animate__animated animate__fadeInUp animate__delay-1s" 
+       style="width: 320px; position: relative; z-index: 1;">
+    <div class="card-body text-center">
+      <h3 class="card-title mb-3">Our Goal </h3>
+      <p class="list-group list-group-flush text-start">
+        We want to make sure that every family have the tech support they need.
+Instant help through an AI-powered help desk.
+Easy-to-use search for common family questions and tips.
+It is Secure and private
+      </p>
+    </div>
+  </div>
+    <!-- Meet the Team -->
+    <section class="text-center">
+      <h2 class="mb-4">Meet the Team</h2>
+      <div class="d-flex flex-wrap justify-content-center gap-4">
+        <!-- Team Member 1 -->
+        <div class="team-member text-center">
+          <div class="circle-image">
+            <img src="https://via.placeholder.com/120?text=AJ" alt="MiaRasmussen_Alumni" />
+          </div>
+          <p class="mt-2">MiaRasmussen_Alumni</p>
+        </div>
+
+        <!-- Team Member 2 -->
+        <div class="team-member text-center">
+          <div class="circle-image">
+            <img src="https://via.placeholder.com/120?text=BM" alt="Uju Adimora" />
+          </div>
+          <p class="mt-2">Uju Adimora</p>
+        </div>
+
+        <!-- Team Member 3 -->
+        <div class="team-member text-center">
+          <div class="circle-image">
+            <img src="https://via.placeholder.com/120?text=CL" alt="Florin Pinta Alumni" />
+          </div>
+          <p class="mt-2">Florin Pinta Alumni</p>
+        </div>
+
+        <!-- Team Member 4 -->
+        <div class="team-member text-center">
+          <div class="circle-image">
+            <img src="https://via.placeholder.com/120?text=DW" alt="Shaf_alumni" />
+          </div>
+          <p class="mt-2">Shaf_alumni</p>
+        </div>
+
+        <!-- Team Member 5 -->
+        <div class="team-member text-center">
+          <div class="circle-image">
+            <img src="https://via.placeholder.com/120?text=ES" alt="Richard Ricot_Alumnus" />
+          </div>
+          <p class="mt-2">Richard Ricot_Alumnus</p>
+        </div>
+
+        <!-- Team Member 6 -->
+        <div class="team-member text-center">
+          <div class="circle-image">
+            <img src="https://via.placeholder.com/120?text=FM" alt="Jad N." />
+          </div>
+          <p class="mt-2">Jad N.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<style>
+  .circle-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 0 8px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin: 0 auto;
+  }
+
+  .circle-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .circle-image:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(0, 123, 255, 0.7);
+
+    .animated-text {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeSlideUp 1.5s ease forwards;
+  animation-delay: 0.3s;
+}
+
+@keyframes fadeSlideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+  }
+</style>
 {% endblock %}
+
