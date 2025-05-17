@@ -87,6 +87,7 @@
 <!-- JS speech to text function -->
 <script>
   const micButton = document.getElementById('micButton');
+  const micIcon = document.getElementById('micIcon');
   const messageInput = document.getElementById('messageInput');
 
   if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
@@ -100,9 +101,9 @@
     micButton.addEventListener('click', () => {
       micButton.classList.remove('btn-outline-secondary');
       micButton.classList.add('btn-primary', 'listening', 'blinking');
-      micButton.classList.add('listening', 'blinking');
+
       micIcon.classList.remove('bi-mic-fill');
-      micIcon.classList.add('bi-mic-fill');
+      
       recognition.start();
     });
 
@@ -117,9 +118,7 @@
     };
 
     recognition.onend = () => {
-      mmicButton.classList.remove('listening', 'blinking');
-      micIcon.classList.remove('bi-mic-mute-fill');
-      micIcon.classList.add('bi-mic-fill');
+      resetMicButton();
     };
   } else {
     micButton.disabled = true;
@@ -127,12 +126,12 @@
   }
 
   function resetMicButton() {
-  micButton.classList.remove('btn-primary', 'listening', 'blinking');
-  micButton.classList.add('btn-outline-secondary');
+    micButton.classList.remove('btn-primary', 'listening', 'blinking');
+    micButton.classList.add('btn-outline-secondary');
 
-  micIcon.classList.remove('bi-mic-fill');
-  micIcon.classList.add('bi-mic-fill');
-}
+    micIcon.classList.add('bi-mic-fill');
+  }
 </script>
+
 
 {% endblock %}
