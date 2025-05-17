@@ -44,4 +44,21 @@
   </div>
 </div>
 </div>
+
+<!-- To auto size the input field for longer questions -->
+<script>
+  const textarea = document.getElementById('messageInput');
+
+  function autoResize() {
+    textarea.style.height = 'auto';
+    textarea.style.height = textarea.scrollHeight + 'px';
+  }
+
+  textarea.addEventListener('input', autoResize);
+
+  const observer = new MutationObserver(autoResize);
+  observer.observe(textarea, { childList: true, subtree: true, characterData: true });
+
+  window.addEventListener('load', autoResize);
+</script>
 {% endblock %}
