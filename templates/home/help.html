@@ -4,10 +4,11 @@
 
 {% block content %}
 <h1>Need Help?</h1>
-<form method="post">
-    {% csrf_token %}
-    <input type="text" placeholder="What do you need help with?">
-    <button type="submit">🎤</button>
+<form method="post" action="{% url 'some_view_name' %}">
+  {% csrf_token %}
+  <!-- your inputs here -->
+  <input type="text" name="message">
+  <button type="submit">Submit</button>
 </form>
 
 <h2>Common Family Problems</h2>
