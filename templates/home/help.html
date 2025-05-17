@@ -10,39 +10,49 @@
         <h1 class="mb-4 text-center">How can we help?</h1>
         <form method="post" action="{% url 'help' %}">
           {% csrf_token %}
-        
+
           <div class="mb-3">
             <label for="messageInput" class="form-label">Type your question or click the mic to speak it</label>
-        
+
             <div class="position-relative">
-              <textarea id="messageInput" name="message" class="form-control pe-5" rows="3"
-                placeholder="Your question" aria-label="Your question"></textarea>
-        
+              <textarea id="messageInput" name="message" class="form-control pe-5" rows="3" placeholder="Your question"
+                aria-label="Your question"></textarea>
+
               <!-- Mic button -->
-              <button type="button"
-                class="btn btn-outline-secondary position-absolute top-0 end-0 mt-2 me-2"
-                id="micButton"
-                title="Click to speak your question">
+              <button type="button" class="btn btn-outline-secondary position-absolute top-0 end-0 mt-2 me-2"
+                id="micButton" title="Click to speak your question">
                 <i class="bi bi-mic-fill"></i>
               </button>
             </div>
           </div>
-        
-          <!-- Submit button below -->
+
+        <!-- Submit button -->
           <div class="d-grid">
             <button type="submit" class="btn btn-primary">Submit</button>
           </div>
-        </form>      
+        </form>
 
-      <h2 class="mt-4">Common Family Problems</h2>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">How to plan weekly meals?</li>
-        <li class="list-group-item">Best way to organize kids’ chores?</li>
-        <li class="list-group-item">Fun activities for weekends?</li>
-      </ul>
+        <!-- Display answer as text -->
+        <div class="mt-4">
+          <label for="answerBox" class="form-label">Answer</label>
+          <div id="answerBox" class="form-control bg-light" style="min-height: 4em;">
+            {% if answer %}
+              {{ answer }}
+            {% else %}
+              <span class="text-muted">Your answer will appear here after you submit your question.</span>
+            {% endif %}
+          </div>
+        </div>
+
+        <h2 class="mt-4">Common Family Problems</h2>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">How to plan weekly meals?</li>
+          <li class="list-group-item">Best way to organize kids’ chores?</li>
+          <li class="list-group-item">Fun activities for weekends?</li>
+        </ul>
+      </div>
     </div>
   </div>
-</div>
 </div>
 
 <!-- To auto size the input field for longer questions -->
@@ -57,8 +67,51 @@
   textarea.addEventListener('input', autoResize);
 
   const observer = new MutationObserver(autoResize);
-  observer.observe(textarea, { childList: true, subtree: true, characterData: true });
+  observer.observe(textarea, {
+    childList: true,
+    subtree: true,
+    characterData: true
+  });
 
   window.addEventListener('load', autoResize);
 </script>
+
+<!-- Speech to text function -->
+<script>
+  const micButton = document.getElementById('micButton');
+  const messageInput = document.getElementById('messageInput');
+
+  if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const recognition = new SpeechRecognition();
+
+    recognition.lang = 'en-US';
+    recognition.continuous = false;
+    recognition.interimResults = false;
+
+    micButton.addEventListener('click', () => {
+      micButton.innerHTML = '<i class="bi bi-mic-mute-fill"></i>';
+      recognition.start();
+    });
+
+    recognition.onresult = (event) => {
+      const transcript = event.results[0][0].transcript;
+      messageInput.value = transcript;
+      micButton.innerHTML = '<i class="bi bi-mic-fill"></i>';
+      messageInput.dispatchEvent(new Event('input')); // trigger auto-resize
+    };
+
+    recognition.onerror = () => {
+      micButton.innerHTML = '<i class="bi bi-mic-fill"></i>';
+    };
+
+    recognition.onend = () => {
+      micButton.innerHTML = '<i class="bi bi-mic-fill"></i>';
+    };
+  } else {
+    micButton.disabled = true;
+    micButton.title = "Speech recognition not supported in this browser.";
+  }
+</script>
+
 {% endblock %}
