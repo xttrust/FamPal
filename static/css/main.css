@@ -1,3 +1,30 @@
+/* CSS Reset */     
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+:root {
+  --color-primary: #2fa5f0;
+  --color-secondary: #3053ad;
+  --color-hover: #57ccf9;
+  --color-light: #68d6f1;
+  --color-white: #ffffff;
+  --color-dark: #0d1b2a;
+  --box-shadow: rgba(17, 61, 69, 0.35) 0 0.5rem 1.5rem;
+  --box-shadow-hover: rgba(147, 165, 169, 0.393) 0 0 0 3px;
+  /* By setting the font size here to 62.5 we reset the rem. Now 1rem = 10px */
+  font-size: 100%;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+  font-family: Roboto, sans-serif;
+}
+
 /* Style mic button when it is active and listening */
 #micButton.listening {
     background-color: #0d6efd;
