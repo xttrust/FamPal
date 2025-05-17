@@ -3,18 +3,233 @@
 {% block title %}Get Help - FamPal{% endblock %}
 
 {% block content %}
-<h1>Need Help?</h1>
-<form method="post" action="{% url 'help' %}">
-  {% csrf_token %}
-  <!-- your inputs here -->
-  <input type="text" name="message">
-  <button type="submit">Submit</button>
-</form>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+      <div class="card shadow-sm p-4">
+        <h1 class="mb-4 text-center">MILO is here to help!</h1>
+        <form method="post" action="{% url 'help' %}">
+          {% csrf_token %}
 
-<h2>Common Family Problems</h2>
-<ul>
-    <li>How to plan weekly meals?</li>
-    <li>Best way to organize kids’ chores?</li>
-    <li>Fun activities for weekends?</li>
-</ul>
+          <div class="mb-3">
+            <label for="messageInput" class="form-label">Type your question or click the mic and just ask.</label>
+
+            <div class="position-relative">
+              <textarea id="messageInput" name="message" class="form-control pe-5" rows="3" placeholder="Your question"
+                aria-label="Your question"></textarea>
+
+              <!-- Mic button -->
+              <button id="micButton" type="button"
+                class="btn btn-outline-secondary position-absolute top-0 end-0 mt-2 me-2"
+                title="Click the mic to ask your question">
+                <i id="micIcon" class="bi bi-mic-fill"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Submit button -->
+          <div class="d-grid">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+
+        <!-- Display answer as text -->
+        <label for="answerBox" class="form-label">Answer</label>
+        <div class="position-relative">
+          <div id="answerBox" class="form-control bg-light pe-5" style="min-height: 4em;">
+            <span id="spokenAnswer">
+              {% if answer %}
+                {{ answer }}
+              {% else %}
+                Your answer will appear here after you submit your question.
+              {% endif %}
+            </span>
+          </div>
+        
+          <!-- Speaker button for answer -->
+          <button id="speakButton" type="button"
+            class="btn btn-outline-secondary position-absolute top-50 end-0 translate-middle-y me-2"
+            title="Click to hear the answer" style="padding: 0.375rem 0.5rem;">
+            <i class="bi bi-volume-up-fill"></i>
+          </button>
+          <!-- !!!!DELETE FOR PRODUCTION: this is just for testing!!!! -->
+          <button id="testAnswerButton" class="btn btn-sm btn-secondary mt-2">Insert Test Answer</button>
+        </div>
+
+        <br>
+   
+
+        <!-- Link to contacts page -->
+        <div class="position-relative mt-4">
+          <p>
+            Would you still like to speak to someone?
+            Click here for your contacts page and start a call.
+          </p>
+        
+          <a href="" class="btn btn-success d-block w-100 mt-3" title="Go to your contacts">
+          Go to your contacts page
+          </a>
+        </div>
+        <br>
+
+        <!-- TeamViewer-->
+        <label for="messageInput" class="form-label">Do you need remote support? Click the TeamViewer button and
+          follow the instructions.</label>
+        <ul>
+          <li>
+            <p>Warning! Only allow your trusted contacts to use TeamViewer
+              on your
+              device, as they can access everything on it!</p>
+          </li>
+          <li>
+            <p>If you are unsure, don't download it without speaking to
+              someone you trust first!</p>
+          </li>
+        </ul>
+        <!-- TeamViewer logo (generated at https://www.teamviewer.com) -->
+        <div style="position:relative; width:120px; height:60px;">
+          <a href="https://www.teamviewer.com/link/?url=505374" style="text-decoration:none;">
+            <img src="https://static.teamviewer.com/resources/badges/teamviewer_badge_flat1.png"
+              alt="TeamViewer for Remote Support" title="TeamViewer for Remote Support" border="0" width="120"
+              height="60" />
+          </a>
+        </div>
+
+        <h2 class="mt-4">Common Family Problems</h2>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">How to plan weekly meals?</li>
+          <li class="list-group-item">Best way to organize kids’ chores?</li>
+          <li class="list-group-item">Fun activities for weekends?</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CSS -->
+<style>
+  button#micButton.listening {
+    background-color: #0d6efd !important;
+  }
+</style>
+
+<!-- JS to auto size the input field for longer questions -->
+<script>
+  const textarea = document.getElementById('messageInput');
+
+  function autoResize() {
+    textarea.style.height = 'auto';
+    textarea.style.height = textarea.scrollHeight + 'px';
+  }
+
+  textarea.addEventListener('input', autoResize);
+
+  const observer = new MutationObserver(autoResize);
+  observer.observe(textarea, {
+    childList: true,
+    subtree: true,
+    characterData: true
+  });
+
+  window.addEventListener('load', autoResize);
+</script>
+
+<!-- JS ask question speech-to-text mic function -->
+<script>
+  const micButton = document.getElementById('micButton');
+  const micIcon = document.getElementById('micIcon');
+  const messageInput = document.getElementById('messageInput');
+
+  if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const recognition = new SpeechRecognition();
+
+    recognition.lang = 'en-US';
+    recognition.continuous = false;
+    recognition.interimResults = false;
+
+    micButton.addEventListener('click', () => {
+      micButton.classList.remove('btn-outline-secondary');
+      micButton.classList.add('btn-primary', 'listening', 'blinking');
+
+      micIcon.classList.remove('bi-mic-fill');
+
+      recognition.start();
+    });
+
+    recognition.onresult = (event) => {
+      const transcript = event.results[0][0].transcript;
+      messageInput.value = transcript;
+      messageInput.dispatchEvent(new Event('input')); // trigger auto-resize
+    };
+
+    recognition.onerror = () => {
+      resetMicButton();
+    };
+
+    recognition.onend = () => {
+      resetMicButton();
+    };
+  } else {
+    micButton.disabled = true;
+    micButton.title = "Speech recognition not supported in this browser.";
+  }
+
+  function resetMicButton() {
+    micButton.classList.remove('btn-primary', 'listening', 'blinking');
+    micButton.classList.add('btn-outline-secondary');
+
+    micIcon.classList.add('bi-mic-fill');
+  }
+
+</script>
+
+<!-- JS for read answer text-to-speech function -->
+<script>
+  const speakButton = document.getElementById('speakButton');
+  const spokenAnswer = document.getElementById('spokenAnswer');
+  let speaking = false;
+
+  if ('speechSynthesis' in window) {
+    speakButton.addEventListener('click', () => {
+      if (!spokenAnswer) return;
+
+      const text = spokenAnswer.innerText || spokenAnswer.textContent;
+      if (!text.trim()) return;
+
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'en-US'; // Or 'en-GB' if you prefer
+
+      // Optional: add visual feedback
+      speakButton.classList.remove('btn-outline-secondary');
+      speakButton.classList.add('btn-success');
+      speakButton.innerHTML = `<i class="bi bi-volume-up-fill"></i> Speaking...`;
+
+      speaking = true;
+      window.speechSynthesis.speak(utterance);
+
+      utterance.onend = () => resetSpeakButton();
+      utterance.onerror = () => resetSpeakButton();
+    });
+  } else {
+    speakButton.disabled = true;
+    speakButton.title = "Text-to-speech not supported in this browser.";
+  }
+
+  function resetSpeakButton() {
+    speakButton.classList.remove('btn-success');
+    speakButton.classList.add('btn-outline-secondary');
+    speakButton.innerHTML = `<i class="bi bi-volume-up-fill"></i> Listen`;
+    speaking = false;
+  }
+</script>
+
+<!-- !!!!DELETE FOR PRODUCTION: this is just for testing!!!! -->
+<script>
+  document.getElementById('testAnswerButton').addEventListener('click', () => {
+    document.getElementById('spokenAnswer').textContent =
+      "MILO is now reading this test answer aloud.";
+  });
+</script>
+
 {% endblock %}
