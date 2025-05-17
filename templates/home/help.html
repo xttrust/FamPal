@@ -3,18 +3,45 @@
 {% block title %}Get Help - FamPal{% endblock %}
 
 {% block content %}
-<h1>Need Help?</h1>
-<form method="post" action="{% url 'help' %}">
-  {% csrf_token %}
-  <!-- your inputs here -->
-  <input type="text" name="message">
-  <button type="submit">Submit</button>
-</form>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+      <div class="card shadow-sm p-4">
+        <h1 class="mb-4 text-center">How can we help?</h1>
+        <form method="post" action="{% url 'help' %}">
+          {% csrf_token %}
+        
+          <div class="mb-3">
+            <label for="messageInput" class="form-label">Type your question or click the mic to speak it</label>
+        
+            <div class="position-relative">
+              <textarea id="messageInput" name="message" class="form-control pe-5" rows="3"
+                placeholder="Your question" aria-label="Your question"></textarea>
+        
+              <!-- Mic button -->
+              <button type="button"
+                class="btn btn-outline-secondary position-absolute top-0 end-0 mt-2 me-2"
+                id="micButton"
+                title="Click to speak your question">
+                <i class="bi bi-mic-fill"></i>
+              </button>
+            </div>
+          </div>
+        
+          <!-- Submit button below -->
+          <div class="d-grid">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>      
 
-<h2>Common Family Problems</h2>
-<ul>
-    <li>How to plan weekly meals?</li>
-    <li>Best way to organize kids’ chores?</li>
-    <li>Fun activities for weekends?</li>
-</ul>
+      <h2 class="mt-4">Common Family Problems</h2>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">How to plan weekly meals?</li>
+        <li class="list-group-item">Best way to organize kids’ chores?</li>
+        <li class="list-group-item">Fun activities for weekends?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
 {% endblock %}
