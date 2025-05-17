@@ -12,7 +12,7 @@
           {% csrf_token %}
 
           <div class="mb-3">
-            <label for="messageInput" class="form-label">Type your question or click the mic and jsut ask.</label>
+            <label for="messageInput" class="form-label">Type your question or click the mic and just ask.</label>
 
             <div class="position-relative">
               <textarea id="messageInput" name="message" class="form-control pe-5" rows="3" placeholder="Your question"
@@ -21,7 +21,7 @@
               <!-- Mic button -->
               <button id="micButton" type="button"
                 class="btn btn-outline-secondary position-absolute top-0 end-0 mt-2 me-2"
-                title="Click to speak your question">
+                title="Click the mic to ask your question">
                 <i id="micIcon" class="bi bi-mic-fill"></i>
               </button>
             </div>
@@ -34,33 +34,56 @@
         </form>
 
         <!-- Display answer as text -->
-        <div class="mt-4">
-          <label for="answerBox" class="form-label">Answer</label>
-          <div id="answerBox" class="form-control bg-light" style="min-height: 4em;">
-            {% if answer %}
-            {{ answer }}
-            {% else %}
-            <span class="text-muted">Your answer will appear here after you submit your question.</span>
-            {% endif %}
+        <label for="answerBox" class="form-label">Answer</label>
+        <div class="position-relative">
+          <div id="answerBox" class="form-control bg-light pe-5" style="min-height: 4em;">
+            <span id="spokenAnswer">
+              {% if answer %}
+                {{ answer }}
+              {% else %}
+                Your answer will appear here after you submit your question.
+              {% endif %}
+            </span>
           </div>
-        </div>
-        <br>
-        <br>
         
-        <!-- Display answer as text -->
-        <div>
-          Would you like to speak to someone? Click here for your contacts page and start a call.
+          <!-- Speaker button for answer -->
+          <button id="speakButton" type="button"
+            class="btn btn-outline-secondary position-absolute top-50 end-0 translate-middle-y me-2"
+            title="Click to hear the answer" style="padding: 0.375rem 0.5rem;">
+            <i class="bi bi-volume-up-fill"></i>
+          </button>
+          <button id="testAnswerButton" class="btn btn-sm btn-secondary mt-2">Insert Test Answer</button>
         </div>
+
+        <br>
+   
+
+        <!-- Link to contacts page -->
+        <div class="position-relative mt-4">
+          <p>
+            Would you still like to speak to someone?
+            Click here for your contacts page and start a call.
+          </p>
+        
+          <a href="" class="btn btn-success d-block w-100 mt-3" title="Go to your contacts">
+          Go to your contacts page
+          </a>
+        </div>
+        <br>
 
         <!-- TeamViewer-->
         <label for="messageInput" class="form-label">Do you need remote support? Click the TeamViewer button and
           follow the instructions.</label>
         <ul>
-          <li><p>Warning! Only allow your trusted contacts to use TeamViewer
+          <li>
+            <p>Warning! Only allow your trusted contacts to use TeamViewer
               on your
-              device, as they can access everything on it!</p></li>
-          <li><p>If you are unsure, don't download it without speaking to
-              someone you trust first!</p></li>
+              device, as they can access everything on it!</p>
+          </li>
+          <li>
+            <p>If you are unsure, don't download it without speaking to
+              someone you trust first!</p>
+          </li>
         </ul>
         <!-- TeamViewer logo (generated at https://www.teamviewer.com) -->
         <div style="position:relative; width:120px; height:60px;">
@@ -110,7 +133,7 @@
   window.addEventListener('load', autoResize);
 </script>
 
-<!-- JS speech to text function -->
+<!-- JS ask question speech-to-text mic function -->
 <script>
   const micButton = document.getElementById('micButton');
   const micIcon = document.getElementById('micIcon');
@@ -157,7 +180,55 @@
 
     micIcon.classList.add('bi-mic-fill');
   }
+
 </script>
 
+<!-- JS for read answer text-to-speech function -->
+<script>
+  const speakButton = document.getElementById('speakButton');
+  const spokenAnswer = document.getElementById('spokenAnswer');
+  let speaking = false;
+
+  if ('speechSynthesis' in window) {
+    speakButton.addEventListener('click', () => {
+      if (!spokenAnswer) return;
+
+      const text = spokenAnswer.innerText || spokenAnswer.textContent;
+      if (!text.trim()) return;
+
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'en-US'; // Or 'en-GB' if you prefer
+
+      // Optional: add visual feedback
+      speakButton.classList.remove('btn-outline-secondary');
+      speakButton.classList.add('btn-success');
+      speakButton.innerHTML = `<i class="bi bi-volume-up-fill"></i> Speaking...`;
+
+      speaking = true;
+      window.speechSynthesis.speak(utterance);
+
+      utterance.onend = () => resetSpeakButton();
+      utterance.onerror = () => resetSpeakButton();
+    });
+  } else {
+    speakButton.disabled = true;
+    speakButton.title = "Text-to-speech not supported in this browser.";
+  }
+
+  function resetSpeakButton() {
+    speakButton.classList.remove('btn-success');
+    speakButton.classList.add('btn-outline-secondary');
+    speakButton.innerHTML = `<i class="bi bi-volume-up-fill"></i> Listen`;
+    speaking = false;
+  }
+</script>
+
+<!-- JS for read answer text-to-speech function -->
+<script>
+  document.getElementById('testAnswerButton').addEventListener('click', () => {
+    document.getElementById('spokenAnswer').textContent =
+      "MILO is now reading this test answer aloud.";
+  });
+</script>
 
 {% endblock %}
