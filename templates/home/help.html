@@ -7,12 +7,12 @@
   <div class="row justify-content-center">
     <div class="col-md-8 col-lg-6">
       <div class="card shadow-sm p-4">
-        <h1 class="mb-4 text-center">How can we help?</h1>
+        <h1 class="mb-4 text-center">MILO is here to help!</h1>
         <form method="post" action="{% url 'help' %}">
           {% csrf_token %}
 
           <div class="mb-3">
-            <label for="messageInput" class="form-label">Type your question or click the mic to speak it</label>
+            <label for="messageInput" class="form-label">Type your question or click the mic and jsut ask.</label>
 
             <div class="position-relative">
               <textarea id="messageInput" name="message" class="form-control pe-5" rows="3" placeholder="Your question"
@@ -43,6 +43,32 @@
             <span class="text-muted">Your answer will appear here after you submit your question.</span>
             {% endif %}
           </div>
+        </div>
+        <br>
+        <br>
+        
+        <!-- Display answer as text -->
+        <div>
+          Would you like to speak to someone? Click here for your contacts page and start a call.
+        </div>
+
+        <!-- TeamViewer-->
+        <label for="messageInput" class="form-label">Do you need remote support? Click the TeamViewer button and
+          follow the instructions.</label>
+        <ul>
+          <li><p>Warning! Only allow your trusted contacts to use TeamViewer
+              on your
+              device, as they can access everything on it!</p></li>
+          <li><p>If you are unsure, don't download it without speaking to
+              someone you trust first!</p></li>
+        </ul>
+        <!-- TeamViewer logo (generated at https://www.teamviewer.com) -->
+        <div style="position:relative; width:120px; height:60px;">
+          <a href="https://www.teamviewer.com/link/?url=505374" style="text-decoration:none;">
+            <img src="https://static.teamviewer.com/resources/badges/teamviewer_badge_flat1.png"
+              alt="TeamViewer for Remote Support" title="TeamViewer for Remote Support" border="0" width="120"
+              height="60" />
+          </a>
         </div>
 
         <h2 class="mt-4">Common Family Problems</h2>
@@ -103,7 +129,7 @@
       micButton.classList.add('btn-primary', 'listening', 'blinking');
 
       micIcon.classList.remove('bi-mic-fill');
-      
+
       recognition.start();
     });
 
