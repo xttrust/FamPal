@@ -1,0 +1,6 @@
+/* Style mic button when it is active and listening */
+#micButton.listening {
+    background-color: #0d6efd;
+    color: white;
+    box-shadow: 0 0 8px rgba(13, 110, 253, 0.7);
+  }
