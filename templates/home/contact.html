@@ -25,7 +25,13 @@
             <p class="mt-4 text-start">
               🕒 <strong>Support Hours:</strong> Mon–Fri, 9am–5pm (GMT)
             </p>
-    
+
+            {% if success %}
+            <div class="alert alert-success text-start" role="alert">
+              ✅ Thanks for your message! We'll get back to you as soon as possible.
+            </div>
+            {% endif %}
+
             <!-- Contact Form -->
             <form method="post" action="">
               {% csrf_token %}
@@ -54,27 +60,25 @@
                 <button type="submit" class="btn btn-primary">Send Message</button>
               </div>
             </form>
-            <!-- End Contact Form -->
-    
           </div>
         </div>
       </div>
     </div>
-    
+
     <!-- Address Card -->
-<div class="row justify-content-center">
-  <div class="col-md-8 col-lg-6">
-    <div class="card shadow-sm animate__animated animate__fadeInUp animate__delay-1s">
-      <div class="card-body">
-        <h4 class="card-title text-center mb-3">Our Office</h4>
-        <address class="text-start">
-          FamPal HQ<br>
-          123 Family Lane<br>
-          Dublin, D01 ABC1<br>
-          Ireland
-        </address>
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6">
+        <div class="card shadow-sm animate__animated animate__fadeInUp animate__delay-1s">
+          <div class="card-body">
+            <h4 class="card-title text-center mb-3">Our Office</h4>
+            <address class="text-start">
+              FamPal HQ<br>
+              123 Family Lane<br>
+              Dublin, D01 ABC1<br>
+              Ireland
+            </address>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-{% endblock %}
+    {% endblock %}
