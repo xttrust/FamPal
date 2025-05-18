@@ -1,131 +1,335 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# FamPal
 
-Welcome Rich Ricot,
+FamPal   is AI-Powered  Tech Support App  designed to help family members  especially elders, kids, or less tech-savvy individuals It navigate and solve everyday technology issues. It works like a mini "IT support" system for your home.It is easy to learn and use.
+The live link can be found here: [Live Site -  DamPal) (https://fampal-d6a25660fc9b.herokuapp.com/)
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+![Mock Up](doc/readme-images/sitemockup.png)
 
-You can safely delete this README.md file or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **June 18, 2024**
+## Table of Contents
+- [FamPal](#FamPal)
+  - [Table of Contents](#table-of-contents)
+- [User-Experience-Design](#user-experience-design)
+  - [The-Strategy-Plane](#the-strategy-plane)
+    - [Site-Goals](#site-goals)
+    - [Agile Planning](#agile-planning)
+      - [Epics](#epics)
+      - [User Stories](#user-stories)
+  - [The-Scope-Plane](#the-scope-plane)
+  - [The-Structure-Plane](#the-structure-plane)
+    - [Features](#features)
+    - [Features Left To Implement](#features-left-to-implement)
+  - [The-Skeleton-Plane](#the-skeleton-plane)
+    - [Wireframes](#wireframes)
+    - [Database-Design](#database-design)
+    - [Security](#security)
+  - [The-Surface-Plane](#the-surface-plane)
+    - [Design](#design)
+    - [Colour-Scheme](#colour-scheme)
+    - [Typography](#typography)
+    - [Imagery](#imagery)
+  - [Technolgies](#technolgies)
+  - [Testing](#testing)
+  - [Deployment](#deployment)
+    - [Version Control](#version-control)
+    - [Heroku Deployment](#heroku-deployment)
+    - [Run Locally](#run-locally)
+    - [Fork Project](#fork-project)
+  - [Credits](#credits)
 
-## Gitpod Reminders
+# User-Experience-Design
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+## The-Strategy-Plane
 
-`python3 -m http.server`
+### Site-Goals
 
-A blue button should appear to click: _Make Public_,
+The aim of a FamPal is to make technology easier, safer, and more accessible for all family members, especially those who may struggle with it, like elders, kids, or non-tech-savvy users. It Makes technology less intimidating for older adults and easier for children to learn responsibly and as well Free up tech-savvy family members from constantly answering repetitive questions.
 
-Another blue button should appear to click: _Open Browser_.
 
-To run a backend Python file, type `python3 app.py` if your Python file is named `app.py`, of course.
+### Agile Planning
 
-A blue button should appear to click: _Make Public_,
+This project was developed using agile methodologies by delivering small features in incremental sprints. There were 3 sprints in total, spaced out evenly over four weeks.
 
-Another blue button should appear to click: _Open Browser_.
+All projects were  prioritized under the labels, Must have, should have, could have.  "Must have" stories were completed first, "should haves" and then finally "could haves". It was done this way to ensure that all core requirements were completed first to give the project a complete feel, with the nice to have features being added should there be capacity.
 
-By Default, Gitpod gives you superuser security privileges. Therefore, you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+The  board was created using github projects and can be located [here](https://git...) and can be viewed to see more information on the project cards. 
 
-To log into the Heroku toolbelt CLI:
+![FamPal_board1 image](docs/readme_images/...)
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you, so do not share it. If you accidentally make it public, you can create a new one with _Regenerate API Key_.
+#### The project
 
-### Connecting your Mongo database
+The project were completed in 7 parts: 
 
-- **Connect to Mongo CLI on a IDE**
-- navigate to your MongoDB Clusters Sandbox
-- click **"Connect"** button
-- select **"Connect with the MongoDB shell"**
-- select **"I have the mongo shell installed"**
-- choose **mongosh (2.0 or later)** for : **"Select your mongo shell version"**
-- choose option: **"Run your connection string in your command line"**
-- in the terminal, paste the copied code `mongo "mongodb+srv://<CLUSTER-NAME>.mongodb.net/<DBname>" --apiVersion 1 --username <USERNAME>`
-  - replace all `<angle-bracket>` keys with your own data
-- enter password _(will not echo **\*\*\*\*** on screen)_
+**Part 1 - Base Setup**
 
-------
+The base setup  is for all stories needed for the base set up of the application. The most of template  used depend in the base.template
 
-## Release History
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+**Part 2 - Authentication**
 
-**June 18, 2024,** Add Mongo back into template
+The authentication  is for all stories related to the registration, login and authorization of views. This part provides critical functionality 
 
-**June 14, 2024,** Temporarily remove Mongo until the key issue is resolved
+**part 3 - AI funtionality**
 
-**May 28 2024:** Fix Mongo and Links installs
+The AI is ..........
 
-**April 26 2024:** Update node version to 16
+**Part 4 - Data base**
 
-**September 20 2023:** Update Python version to 3.9.17.
+Th database was design.....
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+**Part 5 - Deployment**
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+This  is  all about  stories related to deploying the app to heroku so that the site is live for user and customer use.
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+**Part  6 - Documentation**
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
+This part is for all document-related stories and tasks that are needed to document the software development lifecycle of the application. It aims to deliver quality documentation, explaining all stages of development and necessary information on running, deploying and  how the app works .
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+#### User Stories
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+The following are the project  plan
+**Part1  - Base Setup**
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+As a developer, I need to create the base.html page and structureso that other pages can reuse the layout
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+As a developer, I need to create the footer with social media links and contact information
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+As a developer, I need to create the navbar so that users can navigate the website from any device
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+**EPIC 2 - Stand alone Pages**
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+As a developer, I need to implement a 404 error page to alert users when they have accessed a page that doesn't exist
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+As a developer, I need to implement a 500 error page to alert users when an internal server error occurs
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+As a developer, I need to implement a 403 error page to redirect unauthorised users to so that I can secure my views
 
-------
 
-## FAQ about the uptime script
+**Part 3 - Authentication**
 
-**Why have you added this script?**
+As a developer, I need to implement allauth so that users can sign up and have access to the websites features
 
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
+as a user i want..........
 
-**How will this affect me?**
 
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
+**Part 4 - AI**
 
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
+As a user user, I want AI to be able to resove all my tech  issues
 
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
+As a user user, I want AI ........
 
-**So….?**
 
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
+**Part 7 - Documentation**
 
-**Can I opt out?**
+Tasks:
 
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
+* Complete readme documentation
+* Complete testing documentation write up
 
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
+## The-Scope-Plane
 
-**Anything more?**
+* Responsive Design - Site should be fully functional on all devices from 320px up
+* Hamburger menu for mobile devices
+* Ability to log on and out the User
+* Ability For AI to resove the tech issues
 
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
+## The-Structure-Plane
 
----
+### Features
 
-Happy coding!
+``USER STORY - As a developer, I need to create the navbar so that users can navigate the website from any device``
+
+Implementation:
+
+**Navigation Menu**
+
+ The Navigation contains links for , Logo, Home, Help desk,Sign in/ login and footer
+
+The following navigation items are available on all pages:
+  * Home -> index.html - Visible to all
+  *  Helpdesk - visible to all users
+  * Login/ signup -> Visible to all Users
+  * Footer ->  visible to all
+  
+The navigation menu is displayed on all pages and drops down into a hamburger menu on smaller devices. This will allow users to view the site from any device and not take up too much space on mobile devices.
+
+![Navbar](docs/readme_images/)
+
+
+
+**Home Page**
+
+1.  The home page contains  Navigation bar,  hero iamge, and footer
+
+
+![Nav bar](docs/readme_images/)
+*  Nav bar makes this app easy to explore, so users don’t feel lost, Keep navigation consistent across all pages for familiarity and ease and Let users go straight to what they need without having to scroll or search.
+
+
+![Hero Image](docs/readme_images/)
+*  hero image grabs attention instantly and visually communicates the core message or feeling of your website. It helps create a strong first impression, guiding users to engage further with your content.
+
+![Footer](docs/readme_images/)
+*  Footer provides Team  information
+
+
+**Help desk page**
+![Helpdesk](docs/readme_images/)
+Here AI.....
+
+
+**403 Page**
+
+A 403 error page has been implemented to provide feedback to the user when they try to access unauthorized content. Users will be directed to this page if they alter the URL's and attempt to edit, delete or access pages that are restricted. 
+
+This covers:
+
+``USER STORY - As a developer, I need to implement a 500 error page to alert users when an internal server error occurs``
+
+Implementation:
+
+**500 Page**
+
+A 500 error page has been displayed to alert users when an internal server error occurs. The message relays to users that the problem is on our end, not theirs.
+
+**Base Setup User Stories**
+
+The following stories were implemented in order to set up a base structure for all the HTML pages and the core installations and configurations needed to run the application. While these do not show as individual features, they were stories completed that were needed to implement all of the stories above.
+
+``As a developer, I need to create the base.html page and structure so that other pages can reuse the layout``
+
+``As a developer, I need to create static resources so that images, css and javascript work on the website``
+
+``As a developer, I need to set up the project so that it is ready for implementing the core features``
+
+
+### Features Left To Implement
+ The features that was left to implemt are.....
+
+
+## The-Skeleton-Plane
+
+### Wireframes
+
+- Home page
+
+
+![Home Page](docs/wireframes/wire_homepag.png)
+
+
+- Signup page
+
+
+![Sign up Page](docs/wireframes/)
+
+- Log in
+
+![Login Page](docs/wireframes/)
+
+- Log Out
+
+![Logout Page](docs/wireframes/)
+
+- Create Booking
+
+![Helpdesk ](docs/wireframes/)
+
+
+### Database-Design
+
+The database was designed to allow ......
+
+![Entity Relationship Diagram](docs/readme_images/..)
+
+### Security
+
+Environment variables were stored in an env.py for local development for security purposes to ensure no secret keys, api keys or sensitive information was added the the repository. In production, these variables were added to the heroku config vars within the project. and DeBug was set to Falase before deplyoment , reason bein 1 , it was a good pratice and seconly to avoid breakage of the site during coustomer visiatoonand lastly , if not may expose vital secuity informatiom
+
+## The-Surface-Plane
+### Design
+
+### Colour-Scheme
+
+The main color schemes for the website is soft blue 
+
+* ![color](docs/readme_images/..)
+
+
+## Technolgies
+
+- HTML
+  - The structure of the Website was developed using HTML as the main language.
+- CSS
+  - The Website was styled using custom CSS in an external file.
+- JavaScript
+  - JavaScript was used to make the custom slider on the menu page change and the bootstrap date picker.
+- Python
+  - Python was the main programming language used for the application using the Django Framework.
+- Visual Studio Code
+  - The website was developed using Visual Studio Code IDE
+- GitHub
+  - Source code is hosted on GitHub
+- Git
+  - Used to commit and push code during the development of the Website
+- Font Awesome
+  
+-  Herokoapp: For the deployment
+  
+
+
+## Testing
+
+![Light House Test ](docs/testing/)
+
+![CSS ](docs/testing/)
+
+![Wave ](docs/testing/)
+
+
+## Deployment
+
+### Version Control
+
+The site was created using the Visual Studio Code editor and pushed to github to the remote repository ‘FamPal’.
+
+The following git commands were used throughout development to push code to the remote repo:
+
+```git add <file>``` - This command was used to add the file(s) to the staging area before they are committed.
+
+```git commit -m “commit message”``` - This command was used to commit changes to the local repository queue ready for the final step.
+
+```git push``` - This command was used to push all committed code to the remote repository on github.
+
+### Heroku Deployment
+
+The site was deployed to Heroku. T
+
+The live link can be found here: [Live Site](https://fampal-d6a25660fc9b.herokuapp.com/)
+
+### Run Locally
+
+Navigate to the GitHub Repository you want to clone to use locally:
+
+- Click on the code drop down button
+- Click on HTTPS
+- Copy the repository link to the clipboard
+- Open your IDE of choice (git must be installed for the next steps)
+- Type git clone copied-git-url into the IDE terminal
+
+The project will now have been cloned on your local machine for use.
+
+### Fork Project
+
+Most commonly, forks are used to either propose changes to someone else's project or to use someone else's project as a starting point for your own idea.
+
+- Navigate to the GitHub Repository you want to fork.
+
+- On the top right of the page under the header, click the fork button.
+
+- This will create a duplicate of the full project in your GitHub Repository.
+
+## Credits 
+* Credit to .....
+### Bugs  
+-  There  are some  bugs that needed to be noted:
