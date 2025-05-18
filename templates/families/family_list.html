@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Family Groups</h1>
+  <ul>
+    {% for family in families %}
+      <li><a href="{% url 'families:family_detail' family.pk %}">{{ family.name }}</a></li>
+    {% empty %}
+      <li>No family groups yet.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

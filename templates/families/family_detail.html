@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>{{ family.name }}</h1>
+  <p>Created by: {{ family.created_by }}</p>
+  <p>Members:</p>
+  <ul>
+    {% for member in family.memberships.all %}
+      <li>{{ member.user.username }}</li>
+    {% empty %}
+      <li>No members yet.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
