@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+  <h1>Welcome, {{ user.get_full_name|default:user.username }}!</h1>
+
+  {% if user.userprofile %}
+    <img src="{{ user.userprofile.image.url }}" alt="Profile Image" width="150">
+  {% endif %}
+
+  <hr>
+
+  {% if group_created %}
+    <p><strong>Group you created:</strong> {{ group_created.name }}</p>
+  {% endif %}
+
+  {% if groups_joined %}
+    <p><strong>Groups you're part of:</strong></p>
+    <ul>
+      {% for membership in groups_joined %}
+        <li>{{ membership.family_group.name }}</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>You're not part of any family group yet.</p>
+  {% endif %}
+
+  <hr>
+
+  <h4>Your Questions</h4>
+  <ul>
+    {% for question in user_questions %}
+      <li>{{ question.text }}</li>
+    {% empty %}
+      <li>No questions asked yet.</li>
+    {% endfor %}
+  </ul>
+
+  <h4>Questions in your group(s)</h4>
+  <ul>
+    {% for question in group_questions %}
+      <li>{{ question.text }}</li>
+    {% empty %}
+      <li>No questions in your family group(s).</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}
