@@ -143,13 +143,6 @@
 </div>
 </div>
 
-<!-- CSS -->
-<style>
-  button#micButton.listening {
-    background-color: #0d6efd !important;
-  }
-</style>
-
 <!-- JS to auto size the input field for longer questions -->
 <script>
   const textarea = document.getElementById('messageInput');
@@ -185,6 +178,7 @@
     recognition.continuous = false;
     recognition.interimResults = false;
 
+    // Visual feedback for the mic button
     micButton.addEventListener('click', () => {
       micButton.classList.remove('btn-outline-secondary');
       micButton.classList.add('btn-primary', 'listening', 'blinking');
@@ -234,9 +228,9 @@
       if (!text.trim()) return;
 
       const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = 'en-US'; // Or 'en-GB' if you prefer
+      utterance.lang = 'en-US';
 
-      // Optional: add visual feedback
+      // Visual feedback for the 'speak' button
       speakButton.classList.remove('btn-outline-secondary');
       speakButton.classList.add('btn-success');
       speakButton.innerHTML = `<i class="bi bi-volume-up-fill"></i> Speaking...`;
