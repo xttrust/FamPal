@@ -3,81 +3,77 @@
 {% block title %}Contact - FamPal{% endblock %}
 
 {% block content %}
-<style>
-  .contact-card {
-    background-color: #1c1c1c;
-    color: white;
-    padding: 2rem;
-    border-radius: 1rem;
-    max-width: 500px;
-    margin: auto;
-    font-family: 'Arial', sans-serif;
-    position: relative;
-  }
-
-  .contact-icon {
-    color: #352afc;
-    margin-right: 10px;
-  }
-
-  .contact-section {
-    background: linear-gradient(to right, #2e2afc 40%, #ffffff 20%);
-    min-height: 100vh;
-    padding: 4rem 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .contact-item {
-    margin: 1.5rem 0;
-    border-bottom: 1px dashed #aaa;
-    padding-bottom: 1rem;
-  }
-
-  .contact-item:last-child {
-    border: none;
-  }
-
-  .contact-footer-icons {
-    position: absolute;
-    bottom: -20px;
-    right: 20px;
-    display: flex;
-    gap: 10px;
-  }
-
-  .contact-footer-icons span {
-    background-color: #2e2afc;
-    border-radius: 50%;
-    padding: 0.5rem;
-    color: #000;
-  }
-</style>
-
 <div class="contact-section">
-  <div class="contact-card text-center">
-    <h2>Contact Us</h2>
-    <div class="contact-item">
-      <i class="contact-icon"></i>
-      333 Code institute St.Gitty City, Alabana
-    </div>
-    <div class="contact-item">
-      <i class="contact-icon"></i>
-      123-456-7890
-    </div>
-    <div class="contact-item">
-      <i class="contact-icon"></i>
-      Code@hackathon.com
-    </div>
-    <div class="contact-item">
-      <i class="contact-icon"></i>
-      www.codeinstitude.com
+  <div class="container">
+
+    <!-- Header -->
+    <div class="text-center mb-5">
+      <h1 class="display-4 fw-bold">Contact FamPal</h1>
+      <p class="lead text-secondary">Your AI-powered tech helper for family tasks and more</p>
     </div>
 
-    <div class="contact-footer-icons">
-      <span>💬</span>
-      <span>💬</span>
+    <!-- Contact Information Card -->
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6">
+        <div class="card shadow-sm animate__animated animate__fadeInUp">
+          <div class="card-body">
+            <h3 class="card-title text-center mb-3">We'd love to hear from you!</h3>
+            <p class="text-center">
+              Have questions, suggestions, or feedback about FamPal?<br>
+              Feel free to get in touch — your input helps us improve and serve families better.
+            </p>
+            <p class="mt-4 text-start">
+              🕒 <strong>Support Hours:</strong> Mon–Fri, 9am–5pm (GMT)
+            </p>
+    
+            <!-- Contact Form -->
+            <form method="post" action="">
+              {% csrf_token %}
+              <div class="mb-3">
+                <label for="reason" class="form-label">Reason for Contact</label>
+                <select class="form-select" id="reason" name="reason" required>
+                  <option value="">-- Please select --</option>
+                  <option value="problem">I have a problem with FamPal</option>
+                  <option value="suggestion">I have a suggestion about FamPal</option>
+                  <option value="other">I am contacting you about something else</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="name" class="form-label">Your Name</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Your Email</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+              </div>
+              <div class="mb-3">
+                <label for="message" class="form-label">Your Message</label>
+                <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+              </div>
+              <div class="d-grid">
+                <button type="submit" class="btn btn-primary">Send Message</button>
+              </div>
+            </form>
+            <!-- End Contact Form -->
+    
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Address Card -->
+<div class="row justify-content-center">
+  <div class="col-md-8 col-lg-6">
+    <div class="card shadow-sm animate__animated animate__fadeInUp animate__delay-1s">
+      <div class="card-body">
+        <h4 class="card-title text-center mb-3">Our Office</h4>
+        <address class="text-start">
+          FamPal HQ<br>
+          123 Family Lane<br>
+          Dublin, D01 ABC1<br>
+          Ireland
+        </address>
+      </div>
     </div>
   </div>
 </div>
