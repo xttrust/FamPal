@@ -103,7 +103,14 @@ html {
   padding: 60px 0;
 }
 
+#button#micButton.listening {
+  background-color: #0d6efd !important;
+}
 
+#answerBox {
+  min-height: 4em;
+  white-space: pre-wrap;
+}
 
   
   
