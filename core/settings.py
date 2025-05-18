@@ -157,9 +157,4 @@ ACCOUNT_LOGOUT_REDIRECT_URL = '/'
 SITE_ID = 1
 # Email settings
 # For sending email verification and password reset emails
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'mail.creativeigniter.com'
-EMAIL_PORT = 465
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'fampal@creativeigniter.com'
-EMAIL_HOST_PASSWORD = 'C2Cr)0z_8%6k'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
