@@ -25,7 +25,13 @@ class FamilyMembership(models.Model):
 
 class Question(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='questions')
-    family_group = models.ForeignKey(FamilyGroup, on_delete=models.CASCADE, related_name='questions')
+    family_group = models.ForeignKey(
+        FamilyGroup,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='questions'
+    )
     text = models.TextField()
     created_at = models.DateTimeField(default=timezone.now)
 
