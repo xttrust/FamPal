@@ -18,11 +18,50 @@
     <p><strong>Groups you're part of:</strong></p>
     <ul>
       {% for membership in groups_joined %}
-        <li>{{ membership.family_group.name }}</li>
+        <li>
+          {{ membership.family_group.name }}
+
+          <!-- Leave Family Button per membership -->
+          <form method="post" action="{% url 'leave_family' membership.id %}" class="d-inline ms-3">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-sm btn-danger">Leave</button>
+          </form>
+        </li>
       {% endfor %}
     </ul>
   {% else %}
     <p>You're not part of any family group yet.</p>
+  {% endif %}
+
+<!-- Messages -->
+  {% if messages %}
+    <div class="mt-3">
+      {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+          {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+
+  <!-- Show Family Members if in a group -->
+  {% if group_members %}
+    <hr>
+    <h4>Family Members</h4>
+    <ul>
+      {% for membership in group_members %}
+        <li>{{ membership.user.get_full_name|default:membership.user.username }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  <!-- Show Create Button if no group -->
+  {% if show_create_button %}
+    <form method="GET" action="#">
+      <button type="submit" class="btn btn-primary mt-3">Create Family Group</button>
+    </form>
   {% endif %}
 
   <div class="d-flex justify-content-between align-self-center mt-5">
