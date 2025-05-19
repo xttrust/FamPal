@@ -3,6 +3,7 @@ from django.shortcuts import render
 from families.models import FamilyGroup, Question, FamilyMembership
 from django.shortcuts import redirect, get_object_or_404
 from django.contrib import messages
+from django.views.decorators.http import require_http_methods
 
 @login_required
 def profile_view(request):
@@ -55,4 +56,49 @@ def leave_family_view(request, membership_id):
         messages.success(request, "You have successfully left the family group.")
         return redirect('profile')
 
+    return redirect('profile')
+
+
+@login_required
+@require_http_methods(["POST"])
+def create_family_group(request):
+    user = request.user
+
+    # Check if the user already created or joined a group
+    has_created = FamilyGroup.objects.filter(created_by=user).exists()
+    has_joined = FamilyMembership.objects.filter(user=user).exists()
+
+    if has_created or has_joined:
+        messages.warning(request, "You are already part of a family group and cannot create a new one.")
+        return redirect('profile')
+
+    # Create the group
+    group_name = f"{user.get_full_name() or user.username}'s Family"
+    family_group = FamilyGroup.objects.create(name=group_name, created_by=user)
+
+    # Automatically add the creator as a member
+    FamilyMembership.objects.create(user=user, family_group=family_group)
+
+    messages.success(request, f"Family group '{group_name}' has been created successfully.")
+    return redirect('profile')
+
+
+@login_required
+@require_http_methods(["POST"])
+def delete_family_group(request, group_id):
+    group = get_object_or_404(FamilyGroup, id=group_id)
+
+    if group.created_by != request.user:
+        messages.error(request, "You are not allowed to delete this group.")
+        return redirect('profile')
+
+    group_name = group.name
+
+    # Delete all memberships related to the group
+    FamilyMembership.objects.filter(family_group=group).delete()
+
+    # Delete the group
+    group.delete()
+
+    messages.success(request, f"Family group '{group_name}' and all its memberships have been deleted.")
     return redirect('profile')
