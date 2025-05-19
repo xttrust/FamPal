@@ -1,335 +1,469 @@
+<div align="center">
+  <img src="doc/images/home-desktop.png" alt="Home Page">
+</div>
+
 # FamPal
 
-FamPal   is AI-Powered  Tech Support App  designed to help family members  especially elders, kids, or less tech-savvy individuals It navigate and solve everyday technology issues. It works like a mini "IT support" system for your home.It is easy to learn and use.
-The live link can be found here: [Live Site -  DamPal) (https://fampal-d6a25660fc9b.herokuapp.com/)
+FamPal is an AI-powered help desk designed to assist families with everyday tasks, offering quick answers, smart suggestions, and friendly support whenever it's needed.
+
+## [FamPal Live Website](https://xttrust.github.io/HolyRecipes/)
+
+## Table of Content
+
+
+## Project Goals
 
-![Mock Up](doc/readme-images/sitemockup.png)
+FamPal is a web-based help desk designed for families. It enables users to create and manage private family groups where they can ask questions, offer support, and collaborate more effectively. The platform integrates AI to assist users with quick answers and smart suggestions. The goal is to provide a safe and simple space for families to get help and stay connected.
+
+### Primary Goals
+- Provide a simple and secure way for users to create family groups.
+- Encourage collaboration by allowing family members to ask and answer questions.
+- Integrate AI assistance for quick and intelligent support.
+- Deliver a clean, responsive, and user-friendly experience across all devices.
 
-## Table of Contents
-- [FamPal](#FamPal)
-  - [Table of Contents](#table-of-contents)
-- [User-Experience-Design](#user-experience-design)
-  - [The-Strategy-Plane](#the-strategy-plane)
-    - [Site-Goals](#site-goals)
-    - [Agile Planning](#agile-planning)
-      - [Epics](#epics)
-      - [User Stories](#user-stories)
-  - [The-Scope-Plane](#the-scope-plane)
-  - [The-Structure-Plane](#the-structure-plane)
-    - [Features](#features)
-    - [Features Left To Implement](#features-left-to-implement)
-  - [The-Skeleton-Plane](#the-skeleton-plane)
-    - [Wireframes](#wireframes)
-    - [Database-Design](#database-design)
-    - [Security](#security)
-  - [The-Surface-Plane](#the-surface-plane)
-    - [Design](#design)
-    - [Colour-Scheme](#colour-scheme)
-    - [Typography](#typography)
-    - [Imagery](#imagery)
-  - [Technolgies](#technolgies)
-  - [Testing](#testing)
-  - [Deployment](#deployment)
-    - [Version Control](#version-control)
-    - [Heroku Deployment](#heroku-deployment)
-    - [Run Locally](#run-locally)
-    - [Fork Project](#fork-project)
-  - [Credits](#credits)
+### User Goals
+- As a user, I want to create an account.
+- As a user, I want to log in.
+- As a user, I want to log out.
+- As a user, I want to recover my password if I forget it.
+- As a user, I want to be able to create a family group.
+- As a user, I want to be able to add new members to my family group.
+- As a user, I want to be able to remove members from my family group.
+- As a user, I want to be able to delete the family group I created.
+- As a user, I want to ask questions.
+- As a user, I want to receive help from my family group.
+- As a user, I want to help answer other family members' questions.
+- As a user, I want to talk to an AI assistant to get help.
+- As a user, I want a simple and user-friendly interface.
+- As a user, I want the app to work well on mobile and desktop devices.
 
-# User-Experience-Design
+### Developer Goals
+- As a developer, I want to create a fully responsive design across multiple devices.
+- As a developer, I want to provide access to an admin area to manage users and content.
+- As a developer, I want to integrate an AI chatbot in the help desk section.
+- As a developer, I want to build an appealing and intuitive user interface.
+- As a developer, I want to follow best practices in security, accessibility, and performance.
+- As a developer, I want to deploy the application online for public access.
+- As a developer, I want to make the codebase well-structured and easy to maintain.
+- As a developer, I want to write clean and documented code.
+
+## Acknowledgements
 
-## The-Strategy-Plane
+ - [Awesome Readme Templates](https://awesomeopensource.com/project/elangosundar/awesome-README-templates)
+ - [Awesome README](https://github.com/matiassingers/awesome-readme)
+ - [How to write a Good readme](https://bulldogjob.com/news/449-how-to-write-a-good-readme-for-your-github-project)
 
-### Site-Goals
+## Agile Planning
+
+This project was developed using Agile methodology over the course of **5 days** by a team of **6 developers**. Planning and task management were conducted via **GitHub Projects**, using a **Kanban board** to organize user stories, development tasks, and testing workflows.
 
-The aim of a FamPal is to make technology easier, safer, and more accessible for all family members, especially those who may struggle with it, like elders, kids, or non-tech-savvy users. It Makes technology less intimidating for older adults and easier for children to learn responsibly and as well Free up tech-savvy family members from constantly answering repetitive questions.
+### Kanban Board
+- 📍 GitHub Project Board: [View Board](https://github.com/users/xttrust/projects/13)
 
+### Kanban Board Preview
 
-### Agile Planning
+![Kanban Board](doc/img/kanban.png)
 
-This project was developed using agile methodologies by delivering small features in incremental sprints. There were 3 sprints in total, spaced out evenly over four weeks.
+We communicated and collaborated through **Slack**, which allowed us to stay in sync, share updates, and resolve blockers in real-time. Each team member was responsible for planning, coding, reviewing, and testing features based on assigned tasks. This structure ensured continuous delivery, transparency, and efficient teamwork throughout the sprint.
+## Project Steps & Features
 
-All projects were  prioritized under the labels, Must have, should have, could have.  "Must have" stories were completed first, "should haves" and then finally "could haves". It was done this way to ensure that all core requirements were completed first to give the project a complete feel, with the nice to have features being added should there be capacity.
+The development of FamPal included several key phases, each with specific features designed to meet user and business needs.
 
-The  board was created using github projects and can be located [here](https://github.com/users/xttrust/projects/13) and can be viewed to see more information on the project cards. 
+### 1. **Planning & Setup**
+- Defined project goals and user stories using Agile methodology
+- Created GitHub Project Kanban board for task management
+- Assigned roles and responsibilities to all 6 developers
+- Established team communication on Slack
 
-![FamPal_board1 image](doc/readme-images/board.png)
+### 2. **Environment & Tools**
+- **Backend**: Django with PostgreSQL (deployed on Heroku)
+- **Frontend**: HTML, CSS (Bootstrap), JavaScript
+- **Authentication**: Django-Allauth for registration, login, logout, password recovery
+- **AI Integration**: OpenAI API for AI-powered help desk
+- **Version Control**: Git & GitHub
 
+### 3. **Core Features Implemented**
 
-#### The project
+#### ✅ **User Authentication**
+- User registration, login, logout
+- Secure password reset functionality
 
-The project were completed in parts: 
+#### ✅ **User Profile**
+- Personalized profile page showing:
+  - User's own questions
+  - Questions from their family group(s)
+  - Ability to create, view, and delete questions
 
-**Part 1 - Base Setup**
+#### ✅ **Family Groups**
+- Create a family group
+- Add/remove members from the group
+- Delete family groups created by the user
 
-The base setup  is for all stories needed for the base set up of the application. The most of template  used depend in the base.template
+#### ✅ **Help Desk System**
+- Post questions asking for help
+- Browse questions from family group members
+- Reply to others and collaborate within the group
 
+#### ✅ **AI Chat Integration**
+- Users can ask questions directly to an AI assistant
+- Quick suggestions and support via OpenAI integration
 
-**Part 2 - Authentication**
+#### ✅ **Admin Panel**
+- Full Django admin dashboard for app management
 
-The authentication  is for all stories related to the registration, login and authorization of views. This part provides critical functionality 
+### 4. **Responsive Design**
+- Fully responsive design for desktop, tablet, and mobile devices
+- Clean and accessible user interface using Bootstrap
 
-**part 3 - AI funtionality**
+### 5. **Deployment**
+- Deployed on Heroku using PostgreSQL
+- Static files handled with WhiteNoise
+- Environment variables managed with `.env` for security
 
-The AI is ..........
+---
 
-**Part 4 - Data base**
+Each feature was built and tested collaboratively over the span of 5 days, ensuring both functionality and user experience were prioritized throughout the project.## User Stories
 
-Th database was design.....
+To ensure we delivered a user-focused product, we created user stories to guide development. Each story represents a goal or task a user wants to accomplish using the FamPal application.
 
-**Part 5 - Deployment**
+### Epic: Authentication & Account Management
+- As a user, I want to create an account so I can access the platform.
+- As a user, I want to log in so I can access my personal dashboard.
+- As a user, I want to log out to secure my account when I'm done.
+- As a user, I want to reset my password in case I forget it.
 
-This  is  all about  stories related to deploying the app to heroku so that the site is live for user and customer use.
+### Epic: Profile & Personal Dashboard
+- As a user, I want to view a personalized profile page with my questions and group activity.
+- As a user, I want to see questions I’ve asked so I can track responses.
+- As a user, I want to see questions from my group members so I can offer help.
 
-**Part  6 - Documentation**
+### Epic: Group Management
+- As a user, I want to create a family group so I can collaborate with my family.
+- As a user, I want to add members to my group so we can help each other.
+- As a user, I want to remove members from my group if needed.
+- As a user, I want to delete the group I created if it’s no longer needed.
 
-This part is for all document-related stories and tasks that are needed to document the software development lifecycle of the application. It aims to deliver quality documentation, explaining all stages of development and necessary information on running, deploying and  how the app works .
+### Epic: Help System
+- As a user, I want to post a question asking for help from my group.
+- As a user, I want to reply to questions from group members to offer help.
+- As a user, I want to get help from the group so I feel supported.
 
-#### User Stories
+### Epic: AI Assistance
+- As a user, I want to talk to an AI assistant to get quick advice or help.
+- As a user, I want the AI to provide relevant and fast responses to my queries.
 
-The following are the project  plan
-**Part1  - Base Setup**
+### Epic: Responsive Design & Accessibility
+- As a user, I want to use the app on mobile, tablet, or desktop devices.
+- As a user, I want a clean, intuitive interface that’s easy to navigate.
 
-As a developer, I need to create the base.html page and structureso that other pages can reuse the layout
+---
 
+These user stories served as a blueprint during Agile development, helping the team prioritize functionality and user experience throughout the project.
 
-As a developer, I need to create the footer with social media links and contact information
+## Features
 
-As a developer, I need to create the navbar so that users can navigate the website from any device
+FamPal is designed to be a responsive, family-focused help desk application. Below are the core features of the application, with screenshots included for both desktop and mobile experiences where relevant.
 
-**EPIC 2 - Stand alone Pages**
+---
 
-As a developer, I need to implement a 404 error page to alert users when they have accessed a page that doesn't exist
+### 🔐 Authentication System
 
-As a developer, I need to implement a 500 error page to alert users when an internal server error occurs
+Users can sign up, log in, log out, and reset their passwords with ease.
 
-As a developer, I need to implement a 403 error page to redirect unauthorised users to so that I can secure my views
+- **Signup**
 
+  ![Signup Desktop](doc/img/signup-desktop.png)
+  ![Signup Mobile](doc/img/signup-mobile.png)
 
-**Part 3 - Authentication**
+- **Login**
 
-As a developer, I need to implement allauth so that users can sign up and have access to the websites features
+  ![Login Desktop](doc/img/login-desktop.png)
+  ![Login Mobile](doc/img/login-mobile.png)
 
-as a user i want..........
+- **Logout**
 
+  ![Logout Desktop](doc/img/logout-desktop.png)
+  ![Logout Mobile](doc/img/logout-mobile.png)
 
-**Part 4 - AI**
+- **Reset Password**
 
-As a user user, I want AI to be able to resove all my tech  issues
+  ![Reset Password Desktop](doc/img/reset-password-desktop.png)
+  ![Reset Password Mobile](doc/img/reset-password-mobile.png)
 
-As a user user, I want AI ........
+---
 
+### 🧑‍💼 Profile Dashboard
 
-**Part 7 - Documentation**
+Users can see an overview of their activity including their own questions and group questions.
 
-Tasks:
+- **Profile Page**
 
-* Complete readme documentation
-* Complete testing documentation write up
+  ![Profile Desktop](doc/img/profile-desktop.png)
+  ![Profile Mobile](doc/img/profile-mobile.png)
 
-## The-Scope-Plane
+---
 
-* Responsive Design - Site should be fully functional on all devices from 320px up
-* Hamburger menu for mobile devices
-* Ability to log on and out the User
-* Ability For AI to resove the tech issues
+### 👨‍👩‍👧 Family Group Management
 
-## The-Structure-Plane
+Users can create family groups, add or remove members, and delete their groups.
 
-### Features
+- **Groups Page**
 
-``USER STORY - As a developer, I need to create the navbar so that users can navigate the website from any device``
+  ![Groups Desktop](doc/img/groups-desktop.png)
+  ![Groups Mobile](doc/img/groups-mobile.png)
 
-Implementation:
+---
 
-**Navigation Menu**
+### ❓ Help Desk System
 
- The Navigation contains links for , Logo, Home, Help desk,Sign in/ login and footer
+Users can ask for help, browse questions from their group, and interact with an AI assistant for additional support.
 
-The following navigation items are available on all pages:
-  * Home -> index.html - Visible to all
-  *  Helpdesk - visible to all users
-  * Login/ signup -> Visible to all Users
-  * Footer ->  visible to all
-  
-The navigation menu is displayed on all pages and drops down into a hamburger menu on smaller devices. This will allow users to view the site from any device and not take up too much space on mobile devices.
+- **Help Page**
 
-![Navbar](doc/readme-images/header.png)
+  ![Help Page Desktop](doc/img/help-page-desktop.png)
+  ![Help Page Mobile](doc/img/help-page-mobile.png)
 
+- **Notifications**
 
+  Get real-time notifications when there are new questions in your family group.
 
-**Home Page**
+  ![Notification](doc/img/notification.png)
 
-1.  The home page contains  Navigation bar,  hero iamge, and footer
+---
 
+### 🤖 AI Chat Assistant
 
-![Navbar](doc/readme-images/header.png)
-*  Nav bar makes this app easy to explore, so users don’t feel lost, Keep navigation consistent across all pages for familiarity and ease and Let users go straight to what they need without having to scroll or search.
+A smart assistant is available to offer instant help through natural language interaction.
 
+- Integrated in the **Help Page** (see screenshots above)
 
-![Hero Image](doc/readme-images/hero.png)
-*  hero image grabs attention instantly and visually communicates the core message or feeling of your website. It helps create a strong first impression, guiding users to engage further with your content.
+---
 
-![Footer](doc/readme-images/footer.png)
-*  Footer provides Team  information
+### 🌐 Navigation
 
+Clear and responsive navigation bar across all pages.
 
-**Help desk page**
-![Helpdesk](doc/readme-images/)
-Here AI.....
+- **Navbar**
 
+  ![Navbar Desktop](doc/img/navbar-desktop.png)
+  ![Navbar Mobile](doc/img/navbar-mobile.png)
 
-**403 Page**
+---
 
-A 403 error page has been implemented to provide feedback to the user when they try to access unauthorized content. Users will be directed to this page if they alter the URL's and attempt to edit, delete or access pages that are restricted. 
+### 📦 Footer
 
-This covers:
+Consistent and responsive footer across the site.
 
-``USER STORY - As a developer, I need to implement a 500 error page to alert users when an internal server error occurs``
+- **Footer**
 
-Implementation:
+  ![Footer Desktop](doc/img/footer-desktop.png)
+  ![Footer Mobile](doc/img/footer-mobile.png)
 
-**500 Page**
+---
 
-A 500 error page has been displayed to alert users when an internal server error occurs. The message relays to users that the problem is on our end, not theirs.
+All pages are built with responsiveness in mind, offering a seamless user experience on both mobile and desktop devices.
 
-**Base Setup User Stories**
+## 🧩 Wireframes
 
-The following stories were implemented in order to set up a base structure for all the HTML pages and the core installations and configurations needed to run the application. While these do not show as individual features, they were stories completed that were needed to implement all of the stories above.
+Before development began, wireframes were created to plan the layout and structure of the application across key pages. These wireframes guided the UI/UX decisions during implementation.
 
-``As a developer, I need to create the base.html page and structure so that other pages can reuse the layout``
+All wireframes were created with responsiveness in mind to ensure usability across devices.
 
-``As a developer, I need to create static resources so that images, css and javascript work on the website``
+### Home Page
 
-``As a developer, I need to set up the project so that it is ready for implementing the core features``
+![Home Wireframe](doc/wireframes/home.png)
 
+---
 
-### Features Left To Implement
- The features that was left to implemt are.....
+### Login Page
 
+![Login Wireframe](doc/wireframes/login.png)
 
-## The-Skeleton-Plane
+---
 
-### Wireframes
+### Signup Page
 
-- Home page
+![Signup Wireframe](doc/wireframes/signup.png)
 
+---
 
-![Home Page](docs/wireframes/wire_homepag.png)
+### Profile Page
 
+![Profile Wireframe](doc/wireframes/profile.png)
 
-- Signup page
+---
 
+### Help Desk Page
 
-![Sign up Page](docs/wireframes/)
+![Help Desk Wireframe](doc/wireframes/help-desk.png)
 
-- Log in
+---
 
-![Login Page](docs/wireframes/)
+These wireframes served as a blueprint throughout the development process and helped maintain design consistency and functionality focus.
+## 🛠️ Technologies Used
 
-- Log Out
+This project was built using a modern full-stack approach, combining Django with Bootstrap for a responsive, dynamic, and scalable application.
 
-![Logout Page](docs/wireframes/)
+### ⚙️ Backend
+- **Python** – Programming language used for backend development
+- **Django** – Web framework used to build the main application logic
+- **Django AllAuth** – Used for authentication (sign up, login, password reset)
+- **SQLite** – Default development database
+- **Gunicorn** – WSGI HTTP server for deploying Django apps
+- **Whitenoise** – For serving static files in production
 
-- Create Booking
+### 🤖 AI Integration
+- **Botpress** – Conversational AI platform used to build the smart assistant
+- **M.I.L.O** – Custom Botpress agent designed to assist users in the Help Desk with friendly, intelligent responses
 
-![Helpdesk ](docs/wireframes/)
+### 🌐 Frontend
+- **HTML5** – Markup language for structuring content
+- **CSS3** – Styling with custom styles and Bootstrap utilities
+- **Bootstrap 5** – Responsive design framework
+- **JavaScript** – Used for minor interactivity
 
+### ☁️ Hosting & Deployment
+- **Heroku** – Platform used to host and deploy the application
+- **GitHub** – Code hosting and version control
+- **GitHub Projects** – Used for Agile planning and task tracking
 
-### Database-Design
+### 🧪 Development Tools
+- **VS Code** – Source-code editor
+- **Slack** – Team communication during the Agile sprint
+- **Google Chrome DevTools** – Debugging and responsive design testing
 
-The database was designed to allow ......
+---
 
-![Entity Relationship Diagram](docs/readme_images/..)
+These tools and technologies were chosen for their simplicity, flexibility, and ease of integration, enabling rapid development and collaboration across a distributed team.
+## 📚 Libraries Used
 
-### Security
+The project utilizes several external libraries and CDNs to enhance functionality and styling:
 
-Environment variables were stored in an env.py for local development for security purposes to ensure no secret keys, api keys or sensitive information was added the the repository. In production, these variables were added to the heroku config vars within the project. and DeBug was set to Falase before deplyoment , reason bein 1 , it was a good pratice and seconly to avoid breakage of the site during coustomer visiatoonand lastly , if not may expose vital secuity informatiom
+### 🧩 CSS Libraries
+- **[Bootstrap 5.3.6](https://getbootstrap.com/)**  
+  For responsive layout, grid system, and UI components.
+- **[Bootstrap Icons 1.10.5](https://icons.getbootstrap.com/)**  
+  Icon library compatible with Bootstrap.
+- **[Font Awesome 6.7.2](https://fontawesome.com/)**  
+  A rich set of icons used throughout the site.
+- **[Animate.css 4.1.1](https://animate.style/)**  
+  CSS animation library used to enhance visual feedback.
+- **Custom CSS**  
+  Additional project-specific styling located in `static/css/main.css`.
 
-## The-Surface-Plane
-### Design
+### 🧩 JavaScript Libraries
+- **[jQuery 3.7.1](https://jquery.com/)**  
+  Used for simple DOM manipulation and Bootstrap plugin support.
 
-### Colour-Scheme
+### 🎨 Assets
+- **Favicon**  
+  Located in `static/img/favicon.png`, used to visually identify the app in the browser tab.
 
-The main color schemes for the website is soft blue 
+These libraries were included via CDN for ease of use and fast loading during development and deployment.
+## 🧪 Testing
 
-* ![color](docs/readme_images/..)
+### ✅ Manual Testing
 
+The following features were manually tested across all main pages on both desktop and mobile devices. Each test passed successfully unless otherwise noted.
 
-## Technolgies
+| Feature                        | Homepage | Help Desk | Profile | Login | Signup | Groups | Logout | Reset Password |
+|-------------------------------|----------|-----------|---------|-------|--------|--------|--------|----------------|
+| Page loads without errors     | ✅       | ✅        | ✅      | ✅    | ✅     | ✅     | ✅     | ✅             |
+| Responsive layout             | ✅       | ✅        | ✅      | ✅    | ✅     | ✅     | ✅     | ✅             |
+| Navigation works correctly    | ✅       | ✅        | ✅      | ✅    | ✅     | ✅     | ✅     | ✅             |
+| Forms submit and validate     | ❌       | ✅        | ✅      | ✅    | ✅     | ✅     | ✅     | ✅             |
+| Error handling (e.g., 404)    | ✅       | ✅        | ✅      | ✅    | ✅     | ✅     | ✅     | ✅             |
+| User authentication flows     | ✅       | ✅        | ✅      | ✅    | ✅     | ✅     | ✅     | ✅             |
+| AI Help Chat works            | ✅       | ✅        | N/A     | N/A   | N/A    | N/A    | N/A    | N/A            |
+| Notifications appear as expected | ✅    | ✅        | ✅      | ✅    | ✅     | ✅     | ✅     | ✅             |
 
-- HTML
-  - The structure of the Website was developed using HTML as the main language.
-- CSS
-  - The Website was styled using custom CSS in an external file.
-- JavaScript
-  - JavaScript was used to make the custom slider on the menu page change and the bootstrap date picker.
-- Python
-  - Python was the main programming language used for the application using the Django Framework.
-- Visual Studio Code
-  - The website was developed using Visual Studio Code IDE
-- GitHub
-  - Source code is hosted on GitHub
-- Git
-  - Used to commit and push code during the development of the Website
-- Font Awesome
-  
--  Herokoapp: For the deployment
-  
+---
 
+### 🖼️ HTML Validation (W3C)
 
-## Testing
+The HTML of the main pages was validated using the [W3C Markup Validator](https://validator.w3.org/).  
+All reported issues were reviewed and addressed.
 
-![Light House Test ](docs/testing/)
+#### Screenshots:
+- ![HTML - Help Desk](doc/tests/html-help-desk.png)
+- ![HTML - Homepage](doc/tests/html-homepage.png)
+- ![HTML - Profile](doc/tests/html-profile.png)
 
-![CSS ](docs/testing/)
+---
 
-![Wave ](docs/testing/)
+### 🎨 CSS Validation
 
+The main stylesheet was validated using the [W3C CSS Validator](https://jigsaw.w3.org/css-validator/).  
+All styles passed the test successfully.
 
-## Deployment
+#### Screenshot:
+- ![CSS Validation - main.css](doc/tests/main.css.png)
 
-### Version Control
+---
 
-The site was created using the Visual Studio Code editor and pushed to github to the remote repository ‘FamPal’.
+### ⚡ Lighthouse Performance Testing
 
-The following git commands were used throughout development to push code to the remote repo:
+Google Chrome's Lighthouse tool was used to assess performance, accessibility, best practices, and SEO.  
+Results show the app performs well on both desktop and mobile platforms.
 
-```git add <file>``` - This command was used to add the file(s) to the staging area before they are committed.
+#### Screenshots:
+- **Homepage - Desktop:**  
+  ![Lighthouse Desktop](doc/tests/lightouse-homepage-desktop.png)
+- **Homepage - Mobile:**  
+  ![Lighthouse Mobile](doc/tests/lightouse-homepage-mobile.png)
+## 🚀 Deployment to Heroku
 
-```git commit -m “commit message”``` - This command was used to commit changes to the local repository queue ready for the final step.
+This project can be easily deployed to Heroku using the default SQLite database (no special environment variables needed).
 
-```git push``` - This command was used to push all committed code to the remote repository on github.
+### Steps to Deploy
 
-### Heroku Deployment
+1. **Create a Heroku app:**
+- Login to Heroku and create an app, and link your app to github repo then go to deploy branch and press Deploy button.
+## Credits
 
-The site was deployed to Heroku. T
+This project was built using the following technologies and tools:
 
-The live link can be found here: [Live Site](https://fampal-d6a25660fc9b.herokuapp.com/)
+### Frameworks and Platforms
+- **Django** – The main web framework used for backend development.
+- **Heroku** – Platform-as-a-Service (PaaS) used for deployment and hosting.
+- **SQLite3** – Lightweight database used for development and deployment.
 
-### Run Locally
+### Frontend and UI
+- **Bootstrap 5** – For responsive and mobile-first UI design.
+- **Bootstrap Icons** – Icon set integrated for UI elements.
+- **Font Awesome** – Additional icons used across the site.
+- **Animate.css** – For CSS animations to enhance user experience.
+- **jQuery** – For DOM manipulation and supporting Bootstrap JavaScript components.
 
-Navigate to the GitHub Repository you want to clone to use locally:
+### AI Integration
+- **Botpress** – Open-source conversational AI platform used to power the AI chatbox.
+- **M.I.L.O.** – AI assistant integrated within Botpress to provide smart help and responses.
 
-- Click on the code drop down button
-- Click on HTTPS
-- Copy the repository link to the clipboard
-- Open your IDE of choice (git must be installed for the next steps)
-- Type git clone copied-git-url into the IDE terminal
+### Tools and Libraries
+- **GitHub Projects** – For Agile planning, project management, and Kanban board collaboration.
+- **Slack** – Team communication during the development process.
+- **Lighthouse** – Google’s performance testing tool used for site optimization and quality assurance.
 
-The project will now have been cloned on your local machine for use.
+### Additional Resources
+- **TeamViewer** – For remote support functionality referenced in the app.
+- **Bootstrap CDN** and other CDN-hosted libraries – For fast, reliable loading of CSS and JavaScript assets.
 
-### Fork Project
+---
 
-Most commonly, forks are used to either propose changes to someone else's project or to use someone else's project as a starting point for your own idea.
+Special thanks to the entire development team for their collaboration and dedication during the 5-day hackathon sprint.
 
-- Navigate to the GitHub Repository you want to fork.
 
-- On the top right of the page under the header, click the fork button.
+## Contributing
 
-- This will create a duplicate of the full project in your GitHub Repository.
+### Project Team
+- **Florin Pinta** – [https://github.com/xttrust](https://github.com/xttrust)
+- **Mia Rasmussen** – [https://github.com/MiaRasmussen05](https://github.com/MiaRasmussen05)
+- **Richard Ricot** – [https://github.com/rich-p-rich](https://github.com/rich-p-rich)
+- **Shafi Khan** – [https://github.com/Shaf8808](https://github.com/Shaf8808)
+- **Adimora Uju Louisa** – [https://github.com/ujuadimora-dev](https://github.com/ujuadimora-dev)
+- **John Thompson** – [https://github.com/JohnxT10](https://github.com/JohnxT10)
 
-## Credits 
-* Credit to .....
-### Bugs  
--  There  are some  bugs that needed to be noted:
+
+Special thanks to the entire team for their dedication and collaboration to make this project successful.
+
+
