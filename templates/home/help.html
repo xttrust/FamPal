@@ -1,14 +1,67 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block title %}Get Help - FamPal{% endblock %}
 
 {% block content %}
 
+<div class="container-fluid mt-5">
+  <h1 class="mb-4 d-flex justify-content-center">The {{ family.name }} Family - Questions</h1>
+
+<div class="mb-5 p-3 question-textarea rounded">
+  <h5>Ask a Tech Question</h5>
+  <form method="POST" action="{% url 'help' %}">
+    {% csrf_token %}
+    <textarea name="text" class="form-control mb-2" placeholder="Describe your problem..." rows="3" required></textarea>
+    <div class="d-flex justify-content-end"><button type="submit" class="btn button-primary">Submit Question</button></div>
+  </form>
+</div>
+
+<div>
+  <h5>Questions:</h5>
+  {% for question in questions %}
+    <div class="card-question mb-3 p-3">
+      <div class="card-body">
+        <strong>{{ question.user.username }}</strong> asked:
+        <p>{{ question.text }}</p>
+
+        <!-- Button to toggle answers -->
+        <button class="btn btn-link p-0" type="button" data-bs-toggle="collapse" data-bs-target="#answers-{{ question.id }}" aria-expanded="false" aria-controls="answers-{{ question.id }}">
+          {{ question.answers.count }} {{ question.answers.count|pluralize:"answer,answers" }}
+          <i class="bi bi-caret-down-fill"></i>
+        </button>
+
+        <!-- Collapsible answers section -->
+        <div class="collapse mt-2" id="answers-{{ question.id }}">
+          {% if question.answers.count > 0 %}
+            {% for answer in question.answers.all %}
+              <div class="border rounded p-2 mb-2">
+                <strong>{{ answer.user.username }}</strong> answered:
+                <p>{{ answer.text }}</p>
+                <small class="text-muted">{{ answer.created_at|date:"M d, Y, h:i a" }}</small>
+              </div>
+            {% endfor %}
+          {% else %}
+            <p class="text-muted">No answers yet.</p>
+          {% endif %}
+          <form method="POST" action="{% url 'help' %}">
+            {% csrf_token %}
+            <textarea name="text" class="form-control mb-2" placeholder="Try and help with the tech answer above..." rows="3" required></textarea>
+            <div class="d-flex justify-content-end"><button type="submit" class="btn button-primary">Submit Answer</button></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  {% empty %}
+    <p>No questions posted yet.</p>
+  {% endfor %}
+</div>
 
 <div class="container mt-5 help-section">
   <!-- Header -->
   <div class="text-center mb-5">
-    <h1 class="display-4 fw-bold">FAMPAL is here to help</h1>
+    <h1 class="display-4 text-white fw-bold">FAMPAL is here to help</h1>
     <p class="lead text-bold">Type your question or click the mic and just ask</p>
   </div>
 
@@ -43,7 +96,7 @@
 
           <!-- Submit button -->
           <div class="d-grid">
-            <button type="submit" class="btn btn-primary">Ask a Question!</button>
+            <button type="submit" class="btn button-primary">Ask a Question!</button>
           </div>
         </form>
       </div>
@@ -181,7 +234,7 @@
     // Visual feedback for the mic button
     micButton.addEventListener('click', () => {
       micButton.classList.remove('btn-outline-secondary');
-      micButton.classList.add('btn-primary', 'listening', 'blinking');
+      micButton.classList.add('button-primary', 'listening', 'blinking');
 
       micIcon.classList.remove('bi-mic-fill');
 
@@ -207,7 +260,7 @@
   }
 
   function resetMicButton() {
-    micButton.classList.remove('btn-primary', 'listening', 'blinking');
+    micButton.classList.remove('button-primary', 'listening', 'blinking');
     micButton.classList.add('btn-outline-secondary');
 
     micIcon.classList.add('bi-mic-fill');
@@ -261,5 +314,8 @@ document.getElementById('testAnswerButton').addEventListener('click', () => {
   "MILO is now reading this test answer aloud.\nSo is CLARA.\nThis was LLM-generated. \nsegqefe wegwefw wrgrar war \n argareg";
 });
 </script>
+
+<script src="https://cdn.botpress.cloud/webchat/v2.4/inject.js"></script>
+<script src="https://files.bpcontent.cloud/2025/05/17/23/20250517232917-H9FTP079.js"></script>
 
 {% endblock %}
