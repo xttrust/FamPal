@@ -1,14 +1,16 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>{{ family.name }}</h1>
-  <p>Created by: {{ family.created_by }}</p>
-  <p>Members:</p>
-  <ul>
+  <div class="container-fluid">
+    <h1 class="d-flex justify-content-center my-5">{{ family.name }}</h1>
+    <h2 class="mb-4">Created by: {{ family.created_by }}</h2>
+    <h3 class="mb-5">Members:</h3>
+    <ul>
     {% for member in family.memberships.all %}
-      <li>{{ member.user.username }}</li>
+      <li> <h4>{{ member.user.username }}</h4></li>
     {% empty %}
       <li>No members yet.</li>
     {% endfor %}
   </ul>
+  </div>
 {% endblock %}

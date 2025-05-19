@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="container mt-5">
-  <h1>Welcome, {{ user.get_full_name|default:user.username }}!</h1>
+  <h1 class="d-flex justify-content-center">Welcome, {{ user.get_full_name|default:user.username }}!</h1>
 
   {% if user.userprofile %}
     <img src="{{ user.userprofile.image.url }}" alt="Profile Image" width="150">
@@ -25,24 +25,28 @@
     <p>You're not part of any family group yet.</p>
   {% endif %}
 
-  <hr>
+  <div class="d-flex justify-content-between align-self-center mt-5">
+    <div class="col-4 profile-box py-4 px-5">
+      <h4>Your Questions</h4>
+      <ul class="ps-0 mt-4">
+        {% for question in user_questions %}
+        <li class="box p-3">{{ question.text }}</li>
+        {% empty %}
+        <li class="box-no-border p-3 pt-5">No questions asked yet.</li>
+        {% endfor %}
+      </ul>
+    </div>
 
-  <h4>Your Questions</h4>
-  <ul>
-    {% for question in user_questions %}
-      <li>{{ question.text }}</li>
-    {% empty %}
-      <li>No questions asked yet.</li>
-    {% endfor %}
-  </ul>
-
-  <h4>Questions in your group(s)</h4>
-  <ul>
-    {% for question in group_questions %}
-      <li>{{ question.text }}</li>
-    {% empty %}
-      <li>No questions in your family group(s).</li>
-    {% endfor %}
-  </ul>
+    <div class="col-4 profile-box py-4 px-5">
+      <h4>Questions in your group(s)</h4>
+      <ul class="ps-0 mt-4">
+        {% for question in group_questions %}
+        <li class="box p-3">{{ question.text }}</li>
+        {% empty %}
+        <li class="box-no-border p-5 px-4">No questions in your family group(s).</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
 </div>
 {% endblock %}
