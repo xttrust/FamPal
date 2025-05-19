@@ -5,7 +5,7 @@
     <h1 class="d-flex justify-content-center mt-5">Family Groups</h1>
   <ul class="mt-5">
     {% for family in families %}
-      <li class="familyGroup"><a href="{% url 'families:family_detail' family.pk %}">{{ family.name }}</a></li>
+      <li class="familyGroup"><a href="{% url 'families:family_detail' family.pk %}">{{ family.name }} ⟶</a></li>
     {% empty %}
       <li class="familyGroup d-flex justify-content-center align-self-center"><h2>No family groups yet.</h2></li>
     {% endfor %}

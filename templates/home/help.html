@@ -19,18 +19,26 @@
 </div>
 
 <div>
-  <h5>Questions:</h5>
+  <h5 class="mb-3">Questions:</h5>
   {% for question in questions %}
-    <div class="card-question mb-3 p-3">
+    <div class="card-question mb-3 p-3 pe-2">
       <div class="card-body">
         <strong>{{ question.user.username }}</strong> asked:
-        <p>{{ question.text }}</p>
-
-        <!-- Button to toggle answers -->
-        <button class="btn btn-link p-0" type="button" data-bs-toggle="collapse" data-bs-target="#answers-{{ question.id }}" aria-expanded="false" aria-controls="answers-{{ question.id }}">
+        <p class="question-text">{{ question.text }}</p>
+        <!-- Speaker button for answer -->
+        <div class="d-flex justify-content-between align-self-end pb-0 mb-0">
+          <!-- Button to toggle answers -->
+          <button class="btn btn-link p-0" type="button" data-bs-toggle="collapse" data-bs-target="#answers-{{ question.id }}" aria-expanded="false" aria-controls="answers-{{ question.id }}">
           {{ question.answers.count }} {{ question.answers.count|pluralize:"answer,answers" }}
-          <i class="bi bi-caret-down-fill"></i>
-        </button>
+            <i class="bi bi-caret-down-fill"></i>
+          </button>
+
+          <button type="button"
+          class="btn btn-outline-secondary speak-button"
+          title="Click to hear the answer" style="padding: 0.375rem 0.5rem;">
+          <i class="bi bi-volume-up-fill"></i>
+          </button>
+        </div>
 
         <!-- Collapsible answers section -->
         <div class="collapse mt-2" id="answers-{{ question.id }}">
@@ -47,7 +55,7 @@
           {% endif %}
           <form method="POST" action="{% url 'help' %}">
             {% csrf_token %}
-            <textarea name="text" class="form-control mb-2" placeholder="Try and help with the tech answer above..." rows="3" required></textarea>
+            <textarea name="text" class="form-control answer-textarea mb-2" placeholder="Try and help with the tech answer above..." rows="3" required></textarea>
             <div class="d-flex justify-content-end"><button type="submit" class="btn button-primary">Submit Answer</button></div>
           </form>
         </div>
@@ -57,143 +65,36 @@
     <p>No questions posted yet.</p>
   {% endfor %}
 </div>
-
-<div class="container mt-5 help-section">
-  <!-- Header -->
-  <div class="text-center mb-5">
-    <h1 class="display-4 text-white fw-bold">FAMPAL is here to help</h1>
-    <p class="lead text-bold">Type your question or click the mic and just ask</p>
-  </div>
-
-  <div class="row justify-content-center">
-    <div class="col-md-8 col-lg-6">
-      <div class="card shadow-sm p-4">
-        <form method="post" action="{% url 'help' %}">
-          {% csrf_token %}
-
-          <!-- Textarea and mic -->
-          <div class="position-relative mb-3">
-            <textarea id="messageInput" name="message" class="form-control pe-5" rows="3"
-              placeholder="Enter your question, check it, then click Ask a Question!"
-              aria-label="Your question"></textarea>
-
-            <button id="micButton" type="button"
-              class="btn btn-outline-secondary position-absolute top-0 end-0 mt-2 me-2"
-              title="Click the mic to ask your question">
-              <i id="micIcon" class="bi bi-mic-fill"></i>
-            </button>
-          </div>
-
-          <!-- Hint text -->
-          <div class="bg-white border rounded p-3 mb-3">
-            <strong>Hint:</strong> Need to change your question?
-            <ul class="mb-2">
-              <li>Click on the text to change what you need</li>
-              <li>Or just click on the mic to ask again</li>
-              <li>Click Ask a Question! when you're ready</li>
-            </ul>
-          </div>
-
-          <!-- Submit button -->
-          <div class="d-grid">
-            <button type="submit" class="btn button-primary">Ask a Question!</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <br>
-
-
-
-  <!-- Display answer as text -->
-  <div class="row justify-content-center">
-    <div class="col-md-8 col-lg-6">
-      <label for="answerBox" class="form-label"></label>
-      <div class="position-relative">
-        <div id="answerBox" class="form-control bg-light pe-5" style="min-height: 4em;">
-          <span id="spokenAnswer">
-            {% if answer %}
-            {{ answer }}
-            {% else %}
-            Your answer will appear here after you click Ask a Question!
-            {% endif %}
-          </span>
-        </div>
-
-        <!-- Speaker button for answer -->
-        <button id="speakButton" type="button"
-          class="btn btn-outline-secondary position-absolute top-50 end-0 translate-middle-y me-2"
-          title="Click to hear the answer" style="padding: 0.375rem 0.5rem;">
-          <i class="bi bi-volume-up-fill"></i>
-        </button>
-        <!-- !!!!DELETE FOR PRODUCTION: this is just for testing!!!! -->
-        <button id="testAnswerButton" class="btn btn-sm btn-secondary mt-2">Insert Test Answer: DEV ONLY!!!</button>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- Speak to a friend section -->
-  <div class="row justify-content-center">
-    <div class="col-md-8 col-lg-6">
-      <div class="bg-white border rounded p-3 mt-3 mb-3">
-        <strong>Need to speak to a friend?</strong>
-        <ul>
-          <li>Click the contacts button and start a chat or a call.</li>
-        </ul>
-        <!-- Go to Contacts button -->
-        <div class="position-relative mt-4">
-          <a href="" class="btn btn-success d-block w-100 mt-3" title="Go to your contacts">
-            Go to your Contacts Page
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <br>
-
-  <!-- Remote Support and TeamViewer-->
-  <div class="row justify-content-center">
-    <div class="col-md-8 col-lg-6">
-      <div class="bg-white border rounded p-3 mt-3 mb-3">
-        <strong>Remote Support</strong>
-        <p>Do you need someone to work on your device for you?</p>
-        <ul>
-          <li>Click on the TeamView icon below and follow the installation steps.</li>
-        </ul>
-        <p>Warning! Only allow someone you know and trust to use TeamViewer
-          on your device, as it means they can access everything on it: photos, email, banking, the lot!</p>
-
-        <p>If you are unsure, don't download it without speaking to
-          someone you trust first!</p>
-        </li>
-        </ul>
-        <!-- TeamViewer logo (generated at https://www.teamviewer.com) -->
-        <div style="position:relative; width:120px; height:60px;">
-          <a href="https://www.teamviewer.com/link/?url=505374" style="text-decoration:none;">
-            <img src="https://static.teamviewer.com/resources/badges/teamviewer_badge_flat1.png"
-              alt="TeamViewer for Remote Support" title="TeamViewer for Remote Support" border="0" width="120"
-              height="60" />
-          </a>
-        </div>
-      </div>
-    </div>
-
+<div class="container-fluid mt-5">
+  <div class="row row-cols-1 row-cols-md-3 mb-3 text-center d-flex justify-content-center">
+    <!-- Remote Support and TeamViewer-->
     <div class="row justify-content-center">
-      <div class="col-md-8 col-lg-6">
-    <h2 class="mt-4">Common Family Problems</h2>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">How to plan weekly meals?</li>
-      <li class="list-group-item">Best way to organize kids’ chores?</li>
-      <li class="list-group-item">Fun activities for weekends?</li>
-    </ul>
+      <div class="col">
+        <div class="TeamView bg-white border rounded p-3 mt-3 mb-3">
+          <h3><strong>Remote Support</strong></h3>
+          <p>Do you need someone to work on your device for you?</p>
+          <ul>
+            <li>Click on the TeamView icon below and follow the installation steps.</li>
+          </ul>
+          <p>Warning! Only allow someone you know and trust to use TeamViewer
+            on your device, as it means they can access everything on it: photos, email, banking, the lot!</p>
+
+          <p>If you are unsure, don't download it without speaking to
+            someone you trust first!</p>
+          <!-- TeamViewer logo (generated at https://www.teamviewer.com) -->
+          <div class="d-flex justify-content-center">
+            <div style="position:relative; width:120px; height:60px;">
+              <a href="https://www.teamviewer.com/link/?url=505374" style="text-decoration:none;">
+                <img src="https://static.teamviewer.com/resources/badges/teamviewer_badge_flat1.png"
+                  alt="TeamViewer for Remote Support" title="TeamViewer for Remote Support" border="0" width="120"
+                  height="60" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
-</div>
-</div>
-</div>
 </div>
 
 <!-- JS to auto size the input field for longer questions -->
@@ -269,50 +170,22 @@
 
 <!-- JS for read answer text-to-speech function -->
 <script>
-  const speakButton = document.getElementById('speakButton');
-  const spokenAnswer = document.getElementById('spokenAnswer');
-  let speaking = false;
+  document.querySelectorAll('.speak-button').forEach(button => {
+    button.addEventListener('click', () => {
+      // If already speaking, cancel it
+      if (speechSynthesis.speaking) {
+        speechSynthesis.cancel();
+        return;
+      }
 
-  if ('speechSynthesis' in window) {
-    speakButton.addEventListener('click', () => {
-      if (!spokenAnswer) return;
+      // Find the nearest question text
+      const card = button.closest('.card-body');
+      const questionText = card.querySelector('.question-text').textContent;
 
-      const text = spokenAnswer.innerText || spokenAnswer.textContent;
-      if (!text.trim()) return;
-
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = 'en-US';
-
-      // Visual feedback for the 'speak' button
-      speakButton.classList.remove('btn-outline-secondary');
-      speakButton.classList.add('btn-success');
-      speakButton.innerHTML = `<i class="bi bi-volume-up-fill"></i> Speaking...`;
-
-      speaking = true;
-      window.speechSynthesis.speak(utterance);
-
-      utterance.onend = () => resetSpeakButton();
-      utterance.onerror = () => resetSpeakButton();
+      const utterance = new SpeechSynthesisUtterance(questionText);
+      speechSynthesis.speak(utterance);
     });
-  } else {
-    speakButton.disabled = true;
-    speakButton.title = "Text-to-speech not supported in this browser.";
-  }
-
-  function resetSpeakButton() {
-    speakButton.classList.remove('btn-success');
-    speakButton.classList.add('btn-outline-secondary');
-    speakButton.innerHTML = `<i class="bi bi-volume-up-fill"></i> Listen`;
-    speaking = false;
-  }
-</script>
-
-<!-- !!!!DELETE FOR PRODUCTION: this is just for testing!!!! -->
-<script>
-document.getElementById('testAnswerButton').addEventListener('click', () => {
-  document.getElementById('spokenAnswer').textContent =
-  "MILO is now reading this test answer aloud.\nSo is CLARA.\nThis was LLM-generated. \nsegqefe wegwefw wrgrar war \n argareg";
-});
+  });
 </script>
 
 <script src="https://cdn.botpress.cloud/webchat/v2.4/inject.js"></script>
