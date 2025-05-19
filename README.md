@@ -6,7 +6,8 @@
 
 FamPal is an AI-powered help desk designed to assist families with everyday tasks, offering quick answers, smart suggestions, and friendly support whenever it's needed.
 
-## [FamPal Live Website](https://xttrust.github.io/HolyRecipes/)
+## [FamPal Live Website](https://fampal-d6a25660fc9b.herokuapp.com/)
+
 
 ## Table of Content
 
