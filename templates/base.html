@@ -83,8 +83,22 @@
 
     {% endblock %}
 
+    <!-- Messages -->
+    <div class="position-fixed bottom-0 start-0 alert-messages">
+      {% if messages %}
+      <div class="toast show alert-custom" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="5000" data-bs-autohide="true">
+        {% for message in messages %}
+        <div class="alert-header toast-header-custom d-flex justify-content-between p-3">
+          <strong class="me-auto">Notification</strong>
+          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body {% if message.tags %}{{ message.tags }}{% endif %} p-4">{{ message }}</div>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
 
-    <!-- Main content -->
     <main class="container py-3">
         {% block content %}
         <!-- Page-specific content goes here -->
