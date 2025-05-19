@@ -282,6 +282,20 @@ button.btn {
   border: none;
 }
 
+ul.ps-0 > li:first-child {
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+ul.ps-0 > li:last-child {
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+ul.ps-0 > li:not(:first-child):not(:last-child) {
+  border-radius: 0;
+}
+
 /* ACCOUNTS */
 
 .logout {
@@ -317,4 +331,54 @@ input#id_email, input#id_username, input#id_password1, input#id_password2, input
   background-color: var(--color-primary);
   border-color: var(--color-light);
   color: var(--light-text);
+}
+
+.button-secondary {
+  background-color: none;
+  border-color: var(--color-dark);
+  box-shadow: 0 0 5px var(--color-bg);
+  color: var(--color-dark);
+}
+
+.button-primary:hover {
+  background-color: var(--color-primary);
+  border-color: var(--color-dark);
+  box-shadow: inset 2px 2px 3px var(--color-bg), inset -2px -2px 3px var(--color-light);
+  color: var(--color-white);
+  text-shadow: 0.5px 0.5px 0.3px var(--color-dark);
+}
+
+.button-primary:active {
+  background-color: var(--color-primary);
+  border-color: var(--color-light);
+  color: var(--light-text);
+}
+
+button.btn-close {
+  filter: invert(1);
+}
+
+/* ALERT MESSAGE */
+
+.alert-messages {
+  z-index: 12;
+}
+
+.alert-custom {
+  width: 100%;
+  border: 1px solid var(--color-light);
+  background-color: var(--color-bg);
+  color: var(--color-white);
+}
+
+.alert-header {
+  background-color: #3053ad;
+  border-top-right-radius: 8px;
+}
+
+.alert-header-custom {
+  background-color: var(--color-white);
+  color: var(--color-dark);
+  text-shadow: 1px 2px 4px var(--color-white);
+  font-size: 1.2rem;
 }
