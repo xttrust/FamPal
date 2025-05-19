@@ -63,8 +63,8 @@
         <li>
           {{ membership.user.get_full_name|default:membership.user.username }}
 
-          {% if membership.user != user %}
-            <!-- Remove Member Button -->
+          {% if membership.user != user and group_created and group_created.created_by == user %}
+            <!-- Remove Member Button (Only visible to group creator) -->
             <form method="post" action="{% url 'remove_family_member' membership.user.username %}" class="d-inline ms-2">
               {% csrf_token %}
               <button type="submit" class="btn btn-sm btn-outline-danger"
