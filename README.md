@@ -51,14 +51,14 @@ This project was developed using agile methodologies by delivering small feature
 
 All projects were  prioritized under the labels, Must have, should have, could have.  "Must have" stories were completed first, "should haves" and then finally "could haves". It was done this way to ensure that all core requirements were completed first to give the project a complete feel, with the nice to have features being added should there be capacity.
 
-The  board was created using github projects and can be located [here](https://git...) and can be viewed to see more information on the project cards. 
+The  board was created using github projects and can be located [here](https://github.com/users/xttrust/projects/13) and can be viewed to see more information on the project cards. 
 
-![FamPal_board1 image](docs/readme_images/...)
+![FamPal_board1 image](doc/readme-images/board.png)
 
 
 #### The project
 
-The project were completed in 7 parts: 
+The project were completed in parts: 
 
 **Part 1 - Base Setup**
 
@@ -154,7 +154,7 @@ The following navigation items are available on all pages:
   
 The navigation menu is displayed on all pages and drops down into a hamburger menu on smaller devices. This will allow users to view the site from any device and not take up too much space on mobile devices.
 
-![Navbar](docs/readme_images/)
+![Navbar](doc/readme-images/header.png)
 
 
 
@@ -163,19 +163,19 @@ The navigation menu is displayed on all pages and drops down into a hamburger me
 1.  The home page contains  Navigation bar,  hero iamge, and footer
 
 
-![Nav bar](docs/readme_images/)
+![Navbar](doc/readme-images/header.png)
 *  Nav bar makes this app easy to explore, so users don’t feel lost, Keep navigation consistent across all pages for familiarity and ease and Let users go straight to what they need without having to scroll or search.
 
 
-![Hero Image](docs/readme_images/)
+![Hero Image](doc/readme-images/hero.png)
 *  hero image grabs attention instantly and visually communicates the core message or feeling of your website. It helps create a strong first impression, guiding users to engage further with your content.
 
-![Footer](docs/readme_images/)
+![Footer](doc/readme-images/footer.png)
 *  Footer provides Team  information
 
 
 **Help desk page**
-![Helpdesk](docs/readme_images/)
+![Helpdesk](doc/readme-images/)
 Here AI.....
 
 
