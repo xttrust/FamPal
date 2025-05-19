@@ -8,10 +8,6 @@ FamPal is an AI-powered help desk designed to assist families with everyday task
 
 ## [FamPal Live Website](https://fampal-d6a25660fc9b.herokuapp.com/)
 
-
-## Table of Content
-
-
 ## Project Goals
 
 FamPal is a web-based help desk designed for families. It enables users to create and manage private family groups where they can ask questions, offer support, and collaborate more effectively. The platform integrates AI to assist users with quick answers and smart suggestions. The goal is to provide a safe and simple space for families to get help and stay connected.
