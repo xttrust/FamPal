@@ -1,7 +1,7 @@
-from django.shortcuts import render, get_object_or_404
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
-from .models import FamilyGroup
+from django.utils import timezone
+from .models import FamilyGroup, Question, Answer
 
 def family_list(request):
     families = FamilyGroup.objects.all()
@@ -21,10 +21,16 @@ def add_question(request, family_pk):
     return redirect('family_detail', pk=family_pk)
 
 @login_required
-def add_answer(request, question_pk):
-    question = get_object_or_404(Question, pk=question_pk)
-    if request.method == "POST":
-        text = request.POST.get("text")
+def answer_question(request, question_id):
+    question = get_object_or_404(Question, id=question_id)
+
+    if request.method == 'POST':
+        text = request.POST.get('text')
         if text:
-            Answer.objects.create(question=question, user=request.user, text=text)
+            Answer.objects.create(
+                question=question,
+                user=request.user,
+                text=text,
+                is_ai_generated=False  # or True depending on your logic
+            )
     return redirect('help')
