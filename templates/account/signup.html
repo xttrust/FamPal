@@ -4,10 +4,14 @@
     {% trans "Signup" %}
 {% endblock head_title %}
 {% block content %}
-    {% element h1 %}
-        {% trans "Sign Up" %}
-    {% endelement %}
-    {% setvar link %}
+<div class="container-fluid d-flex justify-content-center mt-5">
+    <div class="signup p-5">
+        <div class="d-flex justify-content-center mb-4">
+            {% element h1 %}
+            {% trans "Sign Up" %}
+            {% endelement %}
+        </div>
+        {% setvar link %}
         <a href="{{ login_url }}">
         {% endsetvar %}
         {% setvar end_link %}
@@ -26,9 +30,11 @@
                 {{ redirect_field }}
             {% endslot %}
             {% slot actions %}
+            <div class="d-flex justify-content-end">
                 <button type="submit" class="btn button-primary">
                     {% trans "Sign Up" %}
                 </button>
+            </div>
             {% endslot %}
         {% endelement %}
     {% endif %}
@@ -42,6 +48,9 @@
     {% if SOCIALACCOUNT_ENABLED %}
         {% include "socialaccount/snippets/login.html" with page_layout="entrance" %}
     {% endif %}
+     </div>
+</div>
+    
 {% endblock content %}
 
 
