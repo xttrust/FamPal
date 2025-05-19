@@ -44,11 +44,6 @@ FamPal is a web-based help desk designed for families. It enables users to creat
 - As a developer, I want to make the codebase well-structured and easy to maintain.
 - As a developer, I want to write clean and documented code.
 
-## Acknowledgements
-
- - [Awesome Readme Templates](https://awesomeopensource.com/project/elangosundar/awesome-README-templates)
- - [Awesome README](https://github.com/matiassingers/awesome-readme)
- - [How to write a Good readme](https://bulldogjob.com/news/449-how-to-write-a-good-readme-for-your-github-project)
 
 ## Agile Planning
 
@@ -59,7 +54,7 @@ This project was developed using Agile methodology over the course of **5 days**
 
 ### Kanban Board Preview
 
-![Kanban Board](doc/img/kanban.png)
+![Kanban Board](doc/images/kanban.png)
 
 We communicated and collaborated through **Slack**, which allowed us to stay in sync, share updates, and resolve blockers in real-time. Each team member was responsible for planning, coding, reviewing, and testing features based on assigned tasks. This structure ensured continuous delivery, transparency, and efficient teamwork throughout the sprint.
 ## Project Steps & Features
@@ -169,23 +164,23 @@ Users can sign up, log in, log out, and reset their passwords with ease.
 
 - **Signup**
 
-  ![Signup Desktop](doc/img/signup-desktop.png)
-  ![Signup Mobile](doc/img/signup-mobile.png)
+  ![Signup Desktop](doc/images/signup-desktop.png)
+  ![Signup Mobile](doc/images/signup-mobile.png)
 
 - **Login**
 
-  ![Login Desktop](doc/img/login-desktop.png)
-  ![Login Mobile](doc/img/login-mobile.png)
+  ![Login Desktop](doc/images/login-desktop.png)
+  ![Login Mobile](doc/images/login-mobile.png)
 
 - **Logout**
 
-  ![Logout Desktop](doc/img/logout-desktop.png)
-  ![Logout Mobile](doc/img/logout-mobile.png)
+  ![Logout Desktop](doc/images/logout-desktop.png)
+  ![Logout Mobile](doc/images/logout-mobile.png)
 
 - **Reset Password**
 
-  ![Reset Password Desktop](doc/img/reset-password-desktop.png)
-  ![Reset Password Mobile](doc/img/reset-password-mobile.png)
+  ![Reset Password Desktop](doc/images/reset-password-desktop.png)
+  ![Reset Password Mobile](doc/images/reset-password-mobile.png)
 
 ---
 
@@ -195,8 +190,8 @@ Users can see an overview of their activity including their own questions and gr
 
 - **Profile Page**
 
-  ![Profile Desktop](doc/img/profile-desktop.png)
-  ![Profile Mobile](doc/img/profile-mobile.png)
+  ![Profile Desktop](doc/images/profile-desktop.png)
+  ![Profile Mobile](doc/images/profile-mobile.png)
 
 ---
 
@@ -206,8 +201,8 @@ Users can create family groups, add or remove members, and delete their groups.
 
 - **Groups Page**
 
-  ![Groups Desktop](doc/img/groups-desktop.png)
-  ![Groups Mobile](doc/img/groups-mobile.png)
+  ![Groups Desktop](doc/images/groups-desktop.png)
+  ![Groups Mobile](doc/images/groups-mobile.png)
 
 ---
 
@@ -217,14 +212,14 @@ Users can ask for help, browse questions from their group, and interact with an 
 
 - **Help Page**
 
-  ![Help Page Desktop](doc/img/help-page-desktop.png)
-  ![Help Page Mobile](doc/img/help-page-mobile.png)
+  ![Help Page Desktop](doc/images/help-page-desktop.png)
+  ![Help Page Mobile](doc/images/help-page-mobile.png)
 
 - **Notifications**
 
   Get real-time notifications when there are new questions in your family group.
 
-  ![Notification](doc/img/notification.png)
+  ![Notification](doc/images/notification.png)
 
 ---
 
@@ -242,8 +237,8 @@ Clear and responsive navigation bar across all pages.
 
 - **Navbar**
 
-  ![Navbar Desktop](doc/img/navbar-desktop.png)
-  ![Navbar Mobile](doc/img/navbar-mobile.png)
+  ![Navbar Desktop](doc/images/navbar-desktop.png)
+  ![Navbar Mobile](doc/images/navbar-mobile.png)
 
 ---
 
@@ -253,8 +248,8 @@ Consistent and responsive footer across the site.
 
 - **Footer**
 
-  ![Footer Desktop](doc/img/footer-desktop.png)
-  ![Footer Mobile](doc/img/footer-mobile.png)
+  ![Footer Desktop](doc/images/footer-desktop.png)
+  ![Footer Mobile](doc/images/footer-mobile.png)
 
 ---
 
