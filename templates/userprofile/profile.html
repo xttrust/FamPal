@@ -60,9 +60,40 @@
     <h4>Family Members</h4>
     <ul>
       {% for membership in group_members %}
-        <li>{{ membership.user.get_full_name|default:membership.user.username }}</li>
+        <li>
+          {{ membership.user.get_full_name|default:membership.user.username }}
+
+          {% if membership.user != user %}
+            <!-- Remove Member Button -->
+            <form method="post" action="{% url 'remove_family_member' membership.user.username %}" class="d-inline ms-2">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-sm btn-outline-danger"
+                      onclick="return confirm('Are you sure you want to remove this member?')">
+                Remove
+              </button>
+            </form>
+          {% endif %}
+        </li>
       {% endfor %}
     </ul>
+  {% endif %}
+
+  {% if group_created %}
+    <!-- Add Family Member Form -->
+    <div class="mt-4">
+      <h5>Add Family Member by Username</h5>
+      <form method="post" action="{% url 'add_family_member' %}" class="d-flex gap-2 align-items-center">
+        {% csrf_token %}
+        <input
+          type="text"
+          name="username"
+          placeholder="Enter username"
+          class="form-control"
+          required
+        >
+        <button type="submit" class="btn btn-primary btn-sm">Add Member</button>
+      </form>
+    </div>
   {% endif %}
 
   <!-- Show Create Button if no group -->

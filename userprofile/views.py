@@ -4,6 +4,9 @@ from families.models import FamilyGroup, Question, FamilyMembership
 from django.shortcuts import redirect, get_object_or_404
 from django.contrib import messages
 from django.views.decorators.http import require_http_methods
+from django.contrib.auth import get_user_model
+from django.urls import reverse
+
 
 @login_required
 def profile_view(request):
@@ -102,3 +105,85 @@ def delete_family_group(request, group_id):
 
     messages.success(request, f"Family group '{group_name}' and all its memberships have been deleted.")
     return redirect('profile')
+
+
+User = get_user_model()
+
+@login_required
+def add_family_member(request):
+    """
+    Adds a user by username to the family group created by the logged-in user.
+    Shows appropriate messages for success, errors, or warnings.
+    """
+    if request.method == 'POST':
+        username = request.POST.get('username', '').strip()
+
+        if not username:
+            messages.error(request, "Please enter a username.")
+            return redirect(reverse('profile'))
+
+        # Prevent adding yourself
+        if username.lower() == request.user.username.lower():
+            messages.warning(request, "You cannot add yourself to the family group.")
+            return redirect(reverse('profile'))
+
+        # Try to find the user by username (case insensitive)
+        try:
+            user_to_add = User.objects.get(username__iexact=username)
+        except User.DoesNotExist:
+            messages.warning(request, f"No user found with username '{username}'.")
+            return redirect(reverse('profile'))
+
+        # Get the family group created by the current user
+        try:
+            family_group = FamilyGroup.objects.get(created_by=request.user)
+        except FamilyGroup.DoesNotExist:
+            messages.warning(request, "You do not have a family group to add members to.")
+            return redirect(reverse('profile'))
+
+        # Check if user_to_add is already a member
+        if FamilyMembership.objects.filter(user=user_to_add, family_group=family_group).exists():
+            messages.warning(request, f"User '{username}' is already a member of your family group.")
+            return redirect(reverse('profile'))
+
+        # Add user to family group
+        FamilyMembership.objects.create(user=user_to_add, family_group=family_group)
+        messages.success(request, f"User '{username}' has been added to your family group.")
+        return redirect(reverse('profile'))
+
+    # If not POST, just redirect back
+    return redirect(reverse('profile'))
+
+
+@login_required
+def remove_family_member(request, username):
+    """
+    Remove a user from the current user's family group by username.
+    Only the family group creator can remove members.
+    """
+    try:
+        family_group = FamilyGroup.objects.get(created_by=request.user)
+    except FamilyGroup.DoesNotExist:
+        messages.error(request, "You don't have a family group.")
+        return redirect(reverse('profile'))
+
+    # Prevent removing yourself
+    if username.lower() == request.user.username.lower():
+        messages.warning(request, "You cannot remove yourself from the group.")
+        return redirect(reverse('profile'))
+
+    try:
+        user_to_remove = User.objects.get(username__iexact=username)
+    except User.DoesNotExist:
+        messages.error(request, f"User '{username}' does not exist.")
+        return redirect(reverse('profile'))
+
+    membership = FamilyMembership.objects.filter(user=user_to_remove, family_group=family_group).first()
+
+    if not membership:
+        messages.warning(request, f"User '{username}' is not in your family group.")
+        return redirect(reverse('profile'))
+
+    membership.delete()
+    messages.success(request, f"User '{username}' has been removed from your family group.")
+    return redirect(reverse('profile'))
