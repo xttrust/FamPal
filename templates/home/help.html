@@ -53,7 +53,7 @@
           {% else %}
             <p class="text-muted">No answers yet.</p>
           {% endif %}
-          <form method="POST" action="{% url 'help' %}">
+          <form method="post" action="{% url 'families:answer_question' question.id %}">
             {% csrf_token %}
             <textarea name="text" class="form-control answer-textarea mb-2" placeholder="Try and help with the tech answer above..." rows="3" required></textarea>
             <div class="d-flex justify-content-end"><button type="submit" class="btn button-primary">Submit Answer</button></div>
