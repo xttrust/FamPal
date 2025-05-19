@@ -3,6 +3,7 @@
 :root {
   --color-primary: #2fa5f0;
   --color-secondary: #3053ad;
+  --color-bg: #001570;
   --color-hover: #57ccf9;
   --color-light: #68d6f1;
   --color-white: #ffffff;
@@ -24,9 +25,65 @@
 }
 
 html {
+  background: linear-gradient(to bottom, #d0eaff, #f5f5f5, #d0eaff);
   scroll-behavior: smooth;
   scroll-padding-top: 5rem;
   font-family: Roboto, sans-serif;
+}
+
+body {
+  background: linear-gradient(to bottom, #d0eaff, #f5f5f5, #d0eaff);
+  min-height: 100dvh;
+}
+
+/* NAVBAR */
+
+.navbar {
+  width: 94%;
+  background-color: #001570;
+  border-radius: 10px;
+  box-shadow: 0 1px 5px#0d1b2a;
+  margin-top: 2%;
+}
+
+.logo {
+  width: 50px;
+  filter: invert(1);
+}
+
+/* Navbar hamburger style */
+.navbar-toggler-icon {
+  filter: brightness(0) invert(1);
+}
+
+.navbar-toggler {
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 4px;
+}
+
+.navbar-toggler:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* Subtle hover effect */
+}
+
+.navbar-toggler:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.5); /* white glow */
+  border-color: white;
+}
+
+
+.sideName , .nav-link {
+  color: #fff;
+}
+
+.sideName:hover, .nav-link:hover {
+  color: var(--color-light);
+}
+
+
+footer {
+  margin-top: 22dvh;
 }
 
 /* Style mic button when it is active and listening */
@@ -38,7 +95,7 @@ html {
 
 /* About Section */
 .about-section {
-  background: linear-gradient(to bottom, #d0eaff, #f5f5f5, #d0eaff);
+  /* background: linear-gradient(to bottom, #d0eaff, #f5f5f5, #d0eaff); */
   padding: 60px 0;
 }
 
@@ -112,5 +169,135 @@ html {
   white-space: pre-wrap;
 }
 
-  
-  
+/* FAMILIE GROUP PAGE */
+.familyGroup a {
+color: var(--color-dark);
+font-size: 2em;
+text-decoration: none;
+}
+
+.familyGroup a:hover {
+  color: var(--color-primary);
+  text-shadow: -0.5px -0.5px 0.5px var(--color-dark);
+}
+
+/* SIGNUP PAGE */
+
+.signup-section {
+  min-height: 80vh;
+  padding: 2rem 1rem;
+  background-color: #fff;
+}
+
+form input.form-control {
+  padding: 0.75rem 1rem;
+  border: 1.5px solid #999;
+}
+
+form input.form-control:focus {
+  border-color: #3b82f6;
+  box-shadow: none;
+}
+
+/* .btn-primary {
+  background-color: #3b82f6;
+  border-color: #3b82f6;
+  padding: 0.5rem 1.25rem;
+}
+
+.btn-primary:hover {
+  background-color: #2563eb;
+}
+
+button.btn {
+  padding: 0.75rem;
+} */
+
+/* input#id_email, input#id_username, input#id_password1, input#id_password2 {
+  border: none;
+} */
+
+/* HELP PAGE */
+
+.question-textarea {
+  background-color: var(--color-bg);
+  box-shadow: 0 1px 5px#0d1b2a;
+  color: var(--color-white);
+}
+
+.question-textarea textarea {
+  box-shadow: inset 0 1px 5px#0d1b2a;;
+}
+
+.card-question, .profile-box, .logout {
+  border: 2px solid var(--color-bg);
+  border-radius: 10px;
+  box-shadow: 0 0 10px var(--color-bg), inset 0 0 5px var(--color-white);
+}
+
+.question-card {
+  margin-bottom: 1.5rem;
+}
+.answer {
+  margin-left: 2rem;
+  margin-top: 0.5rem;
+  padding-left: 1rem;
+  border-left: 3px solid #0d6efd;
+  background: #e9f0ff;
+  border-radius: 5px;
+}
+.answer.ai-generated {
+  border-color: #28a745;
+  background: #e6ffed;
+}
+.question-text {
+  font-weight: 500;
+}
+.user-image {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+/* PROFILE PAGE */
+
+.box, .box-no-border {
+  list-style: none;
+  border-top: 2px solid var(--color-dark);
+  box-shadow: inset 0 0 10px var(--color-bg);
+}
+
+.box-no-border {
+  border: none;
+}
+
+/* ACCOUNTS */
+
+.logout {
+  margin-top: 15%;
+}
+
+/* BUTTON */
+
+.button-primary {
+  background-color: var(--color-primary);
+  border-color: var(--color-dark);
+  box-shadow: inset 2px 2px 1px var(--color-light), inset -2px -2px 1px var(--color-bg);
+  color: var(--color-white);
+}
+
+.button-primary:hover {
+  background-color: var(--color-primary);
+  border-color: var(--color-dark);
+  box-shadow: inset 2px 2px 3px var(--color-bg), inset -2px -2px 3px var(--color-light);
+  color: var(--color-white);
+  text-shadow: 0.5px 0.5px 0.3px var(--color-dark);
+}
+
+.button-primary:active {
+  background-color: var(--color-primary);
+  border-color: var(--color-light);
+  color: var(--light-text);
+}
